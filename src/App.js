@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import CreateEmployee from './pages/CreateEmployee/index.jsx'
+import EmployeeList from './pages/EmployeeList/index.jsx'
+import { createGlobalStyle } from 'styled-components'
+//*utils
+import { colors } from './utils/css/index.jsx'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export const StyledGobal = createGlobalStyle`
+*{
+  font-family: 'robotoregular';
 }
 
-export default App;
+body{
+  margin: 0;
+  padding:0;
+}
+
+label {
+  display: block;
+  margin-top: 0.5rem;
+  margin-bottom: 10px;
+  color: ${colors.colorPrimary};
+}
+
+`
+export default function App() {
+    return (
+        <BrowserRouter>
+            <StyledGobal />
+            <Routes>
+                <Route path="/" element={<CreateEmployee />} />
+                <Route path="/employee-list" element={<EmployeeList />} />
+                {/* <Route path="/profile" element={<User />} />
+        <Route path="*" element={<Error />} /> */}
+            </Routes>
+        </BrowserRouter>
+    )
+}

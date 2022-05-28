@@ -1,4 +1,5 @@
-// import { reduxForm } from 'redux-form'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 //*components
@@ -8,9 +9,21 @@ import Button from '../Button'
 //*styled
 import { StyledForm, StyledContentForm } from './styled'
 //*service
-import { schema } from './service'
+import { schema } from './shemaYUP'
+//*selectors
+import { selectEmployees } from '../../utils/selectors'
+//*actions
+import { actionsToggleModal } from './toggleModalReducer'
+import { actionsEmployees } from './employeesReducer'
 
 export default function CreateEmployeesForm() {
+    //*Store with Redux and react-redux
+    const dispatch = useDispatch()
+    const employees = useSelector(selectEmployees)
+
+    console.log(employees)
+
+    //* react-hook-form
     const {
         register,
         handleSubmit,
@@ -19,7 +32,13 @@ export default function CreateEmployeesForm() {
     } = useForm({
         resolver: yupResolver(schema),
     })
-    const onSubmit = (data) => console.log(data)
+
+    const onSubmit = (data) => {
+        console.log(data)
+        dispatch(actionsEmployees.AddAnEmployee(data))
+        dispatch(actionsToggleModal.toggleModal())
+    }
+
     return (
         <StyledContentForm>
             <StyledForm

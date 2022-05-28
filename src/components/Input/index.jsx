@@ -57,6 +57,7 @@ export default function Input({
                             <StyledInput
                                 type={`${type}`}
                                 name={`${name}`}
+                                // onChange={(e) => console.log(e.target.value)}
                                 {...register(name, { required: true })}
                             />
                         )}

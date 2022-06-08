@@ -5,3 +5,8 @@
     font-weight: normal;
     font-style: normal;
 }
+
+.ag-theme-alpine {
+    /* use theme parameters where possible */
+    --ag-foreground-color: #2b489b;
+}

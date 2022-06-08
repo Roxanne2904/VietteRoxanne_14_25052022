@@ -15,6 +15,8 @@ import { selectEmployees } from '../../utils/selectors'
 //*actions
 import { actionsToggleModal } from './toggleModalReducer'
 import { actionsEmployees } from './employeesReducer'
+//*utils
+import { department } from '../../utils/selectDatas/department'
 
 export default function CreateEmployeesForm() {
     //*Store with Redux and react-redux
@@ -34,8 +36,7 @@ export default function CreateEmployeesForm() {
     })
 
     const onSubmit = (data) => {
-        console.log(data)
-        dispatch(actionsEmployees.AddAnEmployee(data))
+        dispatch(actionsEmployees.addAnEmployee(data))
         dispatch(actionsToggleModal.toggleModal())
     }
 
@@ -91,6 +92,7 @@ export default function CreateEmployeesForm() {
                     register={register}
                     errors={errors}
                     control={control}
+                    options={department}
                 />
                 <Button type="submit" text="Save" />
             </StyledForm>

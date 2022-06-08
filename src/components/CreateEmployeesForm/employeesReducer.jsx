@@ -13,7 +13,7 @@ const employeesSlide = createSlice({
                 draft.message = null
             },
         },
-        AddAnEmployee: {
+        addAnEmployee: {
             prepare: (employee) => ({ payload: employee }),
             reducer: (draft, action) => {
                 //*every function
@@ -44,6 +44,12 @@ const employeesSlide = createSlice({
                     draft.message = 'Employee Created !'
                     return
                 }
+            },
+        },
+        editEmployeesDatas: {
+            prepare: (indexEmployees) => ({ payload: indexEmployees }),
+            reducer: (draft, action) => {
+                draft.employees.splice(action.payload.indexEmployees, 1)
             },
         },
     },

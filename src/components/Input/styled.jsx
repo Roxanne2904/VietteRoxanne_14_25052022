@@ -18,3 +18,9 @@ export const StyledErrorMessage = styled.span`
     color: red;
     font-size: 0.8rem;
 `
+// export const StyledPageSizeContent = styled.div`
+//     display: flex;
+// `
+// export const StyledLabel = styled.label`
+//     margin-right: 10px;
+// `

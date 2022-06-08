@@ -5,6 +5,7 @@ import Input from '../Input'
 import styled from 'styled-components'
 //*utils
 import { colors, radius } from '../../utils/css'
+import { states } from '../../utils/selectDatas/states/index'
 
 const StyledAddress = styled.fieldset`
     margin-top: 10px;
@@ -50,6 +51,7 @@ export default function Fieldset({ legend, register, errors, control }) {
                 register={register}
                 errors={errors}
                 control={control}
+                options={states}
             />
             <Input
                 name="zipCode"

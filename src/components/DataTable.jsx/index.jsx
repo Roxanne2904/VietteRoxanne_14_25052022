@@ -35,23 +35,24 @@ export default function DataTable() {
     const employees = useSelector(selectEmployees)
     //*---
 
-    const gridRef = useRef() // Optional - for accessing Grid's API
-    const containerStyle = useMemo(() => ({ width: '70%', height: '50%' }), [])
-    const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), [])
-
     //*Local State
     const [rowSelected, setRowSelected] = useState(false)
     const [employeeName, setEmployeeName] = useState()
     const [currentRowData, setCurrentRowData] = useState([])
-
-    //*Use Effect
-    useEffect(() => {
-        setRowData(createRowsDatas(employees.employees))
-    }, [employees.employees])
-
+    const [height, setHeight] = useState(window.innerHeight)
+    // const [number_nbmSelectPageValue, setNumber_nbmSelectPageValue] =
+    //     useState(5)
     //*Rows ans Columns
     const [rowData, setRowData] = useState() // Set rowData to Array of Objects, one Object per Row
     const [columnDefs] = useState([
+        {
+            headerName: '#',
+            width: 50,
+            valueFormatter: (params) => {
+                return `${parseInt(params.node.id) + 1}`
+            },
+            type: ['idColumn'],
+        },
         { field: 'firstName', headerName: 'First Name' },
         { field: 'lastName', headerName: 'Last Name' },
         {
@@ -78,10 +79,10 @@ export default function DataTable() {
         () => ({
             sortable: true,
             filter: 'agTextColumnFilter',
-            width: 150,
+            width: 140,
             floatingFilter: true,
             resizable: true,
-            minWidth: 130,
+            minWidth: 120,
         }),
         []
     )
@@ -89,7 +90,7 @@ export default function DataTable() {
     const columnTypes = useMemo(() => {
         return {
             nonEditableColumn: { editable: false },
-            deleteColumn: {
+            idColumn: {
                 filter: false,
                 editable: false,
                 sortable: false,
@@ -126,6 +127,27 @@ export default function DataTable() {
         }
     }, [])
 
+    const gridRef = useRef() // Optional - for accessing Grid's API
+    const containerStyle = useMemo(
+        () => ({ width: '100%', height: height > 700 ? '71%' : '85%' }),
+        [height]
+    )
+    const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), [])
+
+    //*Use Effect
+    useEffect(() => {
+        //*update Rows Datas
+        setRowData(createRowsDatas(employees.employees))
+        // //*Resize
+        const updateDimensions = () => {
+            const currentHeight = window.innerHeight
+            setHeight(currentHeight)
+        }
+        window.addEventListener('resize', updateDimensions)
+
+        return () => window.removeEventListener('resize', updateDimensions)
+    }, [employees.employees])
+
     //*useCallback
     const cellClickedListener = useCallback((event) => {
         // console.log('cellClicked', event)
@@ -140,6 +162,7 @@ export default function DataTable() {
     }, [])
 
     const paginationNumberFormatter = useCallback((params) => {
+        console.log(params)
         return params.value.toLocaleString()
     }, [])
 
@@ -221,19 +244,13 @@ export default function DataTable() {
                                 id="page-size"
                                 defaultValue={'10'}
                             >
+                                <option value="5">5</option>
                                 <option value="10">10</option>
                                 <option value="25">20</option>
                                 <option value="50">50</option>
                                 <option value="100">100</option>
                             </StyledPageSizeSelect>
                         </StyledBackgroundPageSizeSelect>
-                        {/* <Input
-                            name="pages"
-                            type="select"
-                            options={pages}
-                            label="Page Size"
-                            action={onPageSizeChanged}
-                        /> */}
                     </StyledPageSizeContent>
                 </div>
             </StyledFeatureContent>

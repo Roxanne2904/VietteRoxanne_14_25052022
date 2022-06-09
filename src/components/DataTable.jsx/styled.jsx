@@ -5,7 +5,7 @@ import { colors } from '../../utils/css'
 export const StyledFeatureContent = styled.div`
     display: flex;
     justify-content: space-between;
-    padding: 10px 0;
+    padding: 10px 0 20px 0;
 `
 export const StyledDeleteQuestionContent = styled.div`
     display: flex;

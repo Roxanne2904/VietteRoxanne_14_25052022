@@ -1,9 +1,9 @@
 import { StyledTitle } from './styled'
 
-export default function Title() {
+export default function Title({text}) {
     return (
         <StyledTitle>
-            <h1>HRnet</h1>
+            <h1>{text}</h1>
         </StyledTitle>
     )
 }

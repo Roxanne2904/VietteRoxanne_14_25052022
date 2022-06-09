@@ -4,12 +4,26 @@ import 'ag-grid-community/dist/styles/ag-grid.css' //!core grid CSS, always need
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css' //!optional theme CSS
 import DataTable from '../../components/DataTable.jsx'
 //*styled
-import { StyledMainEmployeeListPage } from './styled'
+import {
+    StyledMainEmployeeListPage,
+    StyledDataTableContent,
+    StyledMainTitleContent,
+    StyledLink,
+} from './styled'
+//*Components
+import Title from '../../components/Title/index.jsx'
 
 export default function EmployeeLists() {
     return (
         <StyledMainEmployeeListPage>
-            <DataTable />
+            <StyledMainTitleContent>
+                <Title text={'Current Employees'} />
+                {/* <StyledMainTitle>Current Employees</StyledMainTitle> */}
+                <StyledLink to={'/'}>- Create a new Employee -</StyledLink>
+            </StyledMainTitleContent>
+            <StyledDataTableContent>
+                <DataTable />
+            </StyledDataTableContent>
         </StyledMainEmployeeListPage>
     )
 }

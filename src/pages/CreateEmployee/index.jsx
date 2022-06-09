@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 //*components
@@ -6,7 +5,7 @@ import Title from '../../components/Title/index'
 import CreateEmployeesForm from '../../components/CreateEmployeesForm'
 import Modal from '../../components/Modal'
 //*styled
-import { StyledContainer, StyledSecondariesTitle } from './Styled'
+import { StyledContainer, StyledSecondariesTitle, StyledLink } from './Styled'
 //*select
 import { selectEmployees } from '../../utils/selectors'
 //*actions
@@ -20,9 +19,11 @@ export default function CreateEmployee() {
     return (
         <div>
             <main>
-                <Title />
+                <Title text={'HRnet'} />
                 <StyledContainer>
-                    <Link to="employee-list">View Current Employees</Link>
+                    <StyledLink to="employee-list">
+                        - View Current Employees -
+                    </StyledLink>
                     <button
                         onClick={() =>
                             dispatch(actionsEmployees.resetInitialState())

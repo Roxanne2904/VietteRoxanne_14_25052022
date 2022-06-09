@@ -1,5 +1,6 @@
 import { selectEmployees } from '../../utils/selectors'
 import { actionsEmployees } from '../CreateEmployeesForm/employeesReducer'
+
 export const removedAnEmployee = (employee) => {
     return async (dispatch, getState) => {
         let employees = selectEmployees(getState()).employees

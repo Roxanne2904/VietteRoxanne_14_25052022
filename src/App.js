@@ -23,8 +23,6 @@ main{
 
 label {
   display: block;
-  margin-top: 0.5rem;
-  margin-bottom: 10px;
   color: ${colors.colorPrimary};
 }
 

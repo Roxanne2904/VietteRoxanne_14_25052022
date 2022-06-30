@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
@@ -19,6 +20,7 @@ import { actionsEmployees } from './employeesReducer'
 import { department } from '../../utils/selectDatas/department'
 
 export default function CreateEmployeesForm() {
+    // let myRef = useRef(null)
     //*Store with Redux and react-redux
     const dispatch = useDispatch()
     const employees = useSelector(selectEmployees)
@@ -39,6 +41,9 @@ export default function CreateEmployeesForm() {
         dispatch(actionsEmployees.addAnEmployee(data))
         dispatch(actionsToggleModal.toggleModal())
     }
+
+    const dateOfBirthRef = useRef(null)
+    const startDateRef = useRef(null)
 
     return (
         <StyledContentForm>
@@ -70,6 +75,7 @@ export default function CreateEmployeesForm() {
                     register={register}
                     errors={errors}
                     control={control}
+                    myRef={dateOfBirthRef}
                 />
                 <Input
                     name="startDate"
@@ -78,6 +84,7 @@ export default function CreateEmployeesForm() {
                     register={register}
                     errors={errors}
                     control={control}
+                    myRef={startDateRef}
                 />
                 <Fieldset
                     legend="Address"

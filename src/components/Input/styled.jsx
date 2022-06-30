@@ -18,6 +18,15 @@ export const StyledErrorMessage = styled.span`
     color: red;
     font-size: 0.8rem;
 `
+export const StyledLabel = styled.label`
+    margin-top: 0.5rem;
+    margin-bottom: 10px;
+`
+export const StyledCalendarComponent = styled.div`
+    display: ${({ state }) => (state === 'true' ? 'flex' : 'none')};
+    z-index: 1;
+    position: absolute;
+`
 // export const StyledPageSizeContent = styled.div`
 //     display: flex;
 // `

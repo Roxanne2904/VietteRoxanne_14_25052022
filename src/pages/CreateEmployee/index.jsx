@@ -1,5 +1,4 @@
-import { useDispatch } from 'react-redux'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 //*components
 import Title from '../../components/Title/index'
 import CreateEmployeesForm from '../../components/CreateEmployeesForm'
@@ -8,7 +7,6 @@ import Modal from '../../components/Modal'
 import { StyledContainer, StyledSecondariesTitle, StyledLink } from './Styled'
 //*select
 import { selectEmployees } from '../../utils/selectors'
-//*actions
 import { actionsEmployees } from '../../components/CreateEmployeesForm/employeesReducer'
 
 export default function CreateEmployee() {
@@ -29,7 +27,7 @@ export default function CreateEmployee() {
                             dispatch(actionsEmployees.resetInitialState())
                         }
                     >
-                        click to reset
+                        reset all !
                     </button>
                     <StyledSecondariesTitle>
                         Create Employee

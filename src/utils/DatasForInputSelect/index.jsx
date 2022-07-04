@@ -1,3 +1,11 @@
+export const department = [
+    { value: 'sales', label: 'Sales' },
+    { value: 'marketing', label: 'Marketing' },
+    { value: 'engineering', label: 'Engineering' },
+    { value: 'humanResources', label: 'Human Resources' },
+    { value: 'legal', label: 'Legal' },
+]
+
 export const states = [
     {
         value: 'alabama',
@@ -234,5 +242,24 @@ export const states = [
     {
         value: 'wyoming',
         label: 'Wyoming',
+    },
+]
+
+export const pages = [
+    {
+        value: '10',
+        label: '10',
+    },
+    {
+        value: '25',
+        label: '25',
+    },
+    {
+        value: '50',
+        label: '50',
+    },
+    {
+        value: '100',
+        label: '100',
     },
 ]

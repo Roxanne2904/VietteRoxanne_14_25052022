@@ -1,7 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { formatAString } from '../../utils/format'
 
-const initialState = { employees: [], message: null }
+const initialState = {
+    employees: [],
+    message: null,
+}
 
 const employeesSlide = createSlice({
     name: 'employees',
@@ -47,9 +50,15 @@ const employeesSlide = createSlice({
             },
         },
         editEmployeesDatas: {
-            prepare: (indexEmployees) => ({ payload: indexEmployees }),
+            prepare: (indexEmployee) => ({ payload: indexEmployee }),
             reducer: (draft, action) => {
-                draft.employees.splice(action.payload.indexEmployees, 1)
+                for (let i = 0; i < draft.employees.length; i++) {
+                    draft.employees[i].index === action.payload &&
+                        draft.employees.splice(
+                            draft.employees.indexOf(draft.employees[i]),
+                            1
+                        )
+                }
             },
         },
     },

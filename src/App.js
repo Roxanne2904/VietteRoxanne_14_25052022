@@ -34,8 +34,6 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<CreateEmployee />} />
                 <Route path="/employee-list" element={<EmployeeList />} />
-                {/* <Route path="/profile" element={<User />} />
-        <Route path="*" element={<Error />} /> */}
             </Routes>
         </BrowserRouter>
     )

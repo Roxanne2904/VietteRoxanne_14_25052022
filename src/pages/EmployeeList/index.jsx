@@ -18,7 +18,6 @@ export default function EmployeeLists() {
         <StyledMainEmployeeListPage>
             <StyledMainTitleContent>
                 <Title text={'Current Employees'} />
-                {/* <StyledMainTitle>Current Employees</StyledMainTitle> */}
                 <StyledLink to={'/'}>- Create a new Employee -</StyledLink>
             </StyledMainTitleContent>
             <StyledDataTableContent>

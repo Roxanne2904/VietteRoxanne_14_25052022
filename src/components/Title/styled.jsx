@@ -1,10 +1,10 @@
 import styled from 'styled-components'
-import { colors } from '../../utils/css'
+import { colors, display } from '../../utils/css'
 
 export const StyledTitle = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: ${display.flex};
+    align-items: ${display.center};
+    justify-content: ${display.center};
     color: ${colors.colorPrimary};
     font-family: Roboto;
     h1 {

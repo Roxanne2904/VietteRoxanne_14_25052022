@@ -1,13 +1,14 @@
 import styled from 'styled-components'
 import { colors } from '../../utils/css/index'
 import { Link } from 'react-router-dom'
-import { LINK_PATTERN } from '../../utils/css/index'
+//*Utils
+import { LINK_PATTERN, display } from '../../utils/css/index'
 
 export const StyledContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    display: ${display.flex};
+    flex-direction: ${display.column};
+    align-items: ${display.center};
+    justify-content: ${display.center};
 `
 
 export const StyledSecondariesTitle = styled.h2`

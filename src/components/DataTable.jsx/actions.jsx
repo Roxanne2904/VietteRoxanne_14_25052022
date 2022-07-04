@@ -1,23 +1,28 @@
 import { selectEmployees } from '../../utils/selectors'
 import { actionsEmployees } from '../CreateEmployeesForm/employeesReducer'
+// import { employeesMap } from '../CreateEmployeesForm/actions'
 
 export const removedAnEmployee = (employee) => {
     return async (dispatch, getState) => {
         let employees = selectEmployees(getState()).employees
-        employees.forEach((elt) => {
-            const currentFirstNameEmployees = elt.firstName
-            const currentLastNameEmployees = elt.lastName
-            if (currentFirstNameEmployees === employee[0].firstName) {
-                if (currentLastNameEmployees === employee[0].lastName) {
-                    const number_nbIndexEmployee = employees.indexOf(elt)
+        const fullName = `${employee[0].lastName}${employee[0].firstName}`
 
-                    dispatch(
-                        actionsEmployees.editEmployeesDatas(
-                            number_nbIndexEmployee
-                        )
-                    )
-                }
-            }
-        })
+        console.log(employees)
+        for (let i = 0; i < employees.length; i++) {
+            const currentFullName = `${employees[i].lastName}${employees[i].firstName}`
+            const getId = currentFullName === fullName && employees[i].index
+            getId !== false &&
+                dispatch(actionsEmployees.editEmployeesDatas(getId))
+        }
+        // console.log(employeeMap)
+        // const getEmployeeIndex = employees.filter((elt) => {
+        //     const currentFirstNameEmployees = elt.firstName
+        //     const currentLastNameEmployees = elt.lastName
+        //     return (
+        //         currentFirstNameEmployees === employee[0].firstName &&
+        //         currentLastNameEmployees === employee[0].lastName &&
+        //         employees.indexOf(elt)
+        //     )
+        // })
     }
 }

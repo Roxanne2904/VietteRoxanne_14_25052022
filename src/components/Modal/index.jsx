@@ -15,8 +15,6 @@ export default function Modal({ id, message }) {
     const dispatch = useDispatch()
     const toggleModal = useSelector(selectToggleModal)
 
-    // console.log(toggleModal)
-
     return (
         toggleModal === 'open' && (
             <StyledModal>

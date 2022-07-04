@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
@@ -11,21 +11,16 @@ import Button from '../Button'
 import { StyledForm, StyledContentForm } from './styled'
 //*service
 import { schema } from './shemaYUP'
-//*selectors
-import { selectEmployees } from '../../utils/selectors'
 //*actions
 import { actionsToggleModal } from './toggleModalReducer'
 import { actionsEmployees } from './employeesReducer'
 //*utils
-import { department } from '../../utils/selectDatas/department'
+import { department } from '../../utils/DatasForInputSelect/index'
 
 export default function CreateEmployeesForm() {
-    // let myRef = useRef(null)
     //*Store with Redux and react-redux
     const dispatch = useDispatch()
-    const employees = useSelector(selectEmployees)
-
-    console.log(employees)
+    // const employees = useSelector(selectEmployees)
 
     //* react-hook-form
     const {
@@ -38,7 +33,10 @@ export default function CreateEmployeesForm() {
     })
 
     const onSubmit = (data) => {
-        dispatch(actionsEmployees.addAnEmployee(data))
+        let i = parseInt(Math.random().toString().split('.')[1]) + 1
+        let newData = { ...data, index: i }
+        console.log(newData)
+        dispatch(actionsEmployees.addAnEmployee(newData))
         dispatch(actionsToggleModal.toggleModal())
     }
 

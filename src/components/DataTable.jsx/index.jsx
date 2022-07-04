@@ -15,8 +15,8 @@ import { selectEmployees } from '../../utils/selectors'
 import { removedAnEmployee } from './actions'
 //*utilsFunctions
 import { createRowsDatas } from './utilsFunctions'
-// //*Utils
-// import { pages } from '../../utils/selectDatas/pages'
+//*Utils
+
 //*Styled
 import {
     StyledFeatureContent,
@@ -150,7 +150,7 @@ export default function DataTable() {
 
     //*useCallback
     const cellClickedListener = useCallback((event) => {
-        // console.log('cellClicked', event)
+        console.log('cellClicked', event)
         setRowSelected(true)
         setEmployeeName(`${event.data.firstName} ${event.data.lastName}`)
         setCurrentRowData([event.data])

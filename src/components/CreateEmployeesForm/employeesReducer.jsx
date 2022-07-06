@@ -19,28 +19,19 @@ const employeesSlide = createSlice({
         addAnEmployee: {
             prepare: (employee) => ({ payload: employee }),
             reducer: (draft, action) => {
-                //*every function
-                function isItTheSameEmployee(currentValue) {
-                    if (
-                        formatAString(action.payload.firstName) ===
-                            formatAString(currentValue.firstName) &&
-                        formatAString(action.payload.lastName) ===
-                            formatAString(currentValue.lastName)
-                    ) {
-                        return false
-                    } else {
-                        return true
-                    }
-                }
-                //*
                 if (draft.employees.length > 0) {
-                    const booleenResponse =
-                        draft.employees.every(isItTheSameEmployee)
-                    if (booleenResponse === true) {
+                    const booleenResponse = draft.employees.some(
+                        (currentValue) =>
+                            formatAString(action.payload.firstName) ===
+                                formatAString(currentValue.firstName) &&
+                            formatAString(action.payload.lastName) ===
+                                formatAString(currentValue.lastName)
+                    )
+                    if (booleenResponse) {
+                        draft.message = 'This employee already exists'
+                    } else {
                         draft.employees.push(action.payload)
                         draft.message = 'Employee Created !'
-                    } else {
-                        draft.message = 'This employee already exists'
                     }
                 } else {
                     draft.employees.push(action.payload)

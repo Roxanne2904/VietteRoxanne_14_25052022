@@ -16,7 +16,15 @@ export const StyledTxtModal = styled.p`
     z-index: 1;
     background: #f1f1f1;
     padding: 17px 31px;
-    width: 20%;
+    width: ${({ id, width }) =>
+        id === 'warning'
+            ? width < 800
+                ? '60%'
+                : '50%'
+            : width < 800
+            ? '50%'
+            : '20%'};
+    ${({ id }) => id === 'warning' && 'flex-direction:column;'};
 `
 export const StyledModalContent = styled.div`
     background-color: #000000;
@@ -25,4 +33,9 @@ export const StyledModalContent = styled.div`
 `
 export const StyledModal = styled.div`
     ${POSITION_PATTERN}
+`
+export const StyledButtonsContent = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
 `

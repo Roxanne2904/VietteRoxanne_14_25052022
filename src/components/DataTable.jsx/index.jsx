@@ -7,11 +7,10 @@ import 'ag-grid-community/dist/styles/ag-grid.css' //!core grid CSS, always need
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css' //!optional theme CSS
 //*components
 import Button from '../../components/Button'
-// import Input from '../Input'
+import Card from '../../components/Card/index'
 //* selector
 import { selectEmployees } from '../../utils/selectors'
 //*actions
-// import { actionsEmployees } from '../CreateEmployeesForm/employeesReducer'
 import { removedAnEmployee } from './actions'
 //*utilsFunctions
 import { createRowsDatas } from './utilsFunctions'
@@ -29,7 +28,7 @@ import {
     StyledBackgroundPageSizeSelect,
 } from './styled.jsx'
 
-export default function DataTable() {
+export default function DataTable({ width }) {
     //*store redux;
     const dispatch = useDispatch()
     const employees = useSelector(selectEmployees)
@@ -40,8 +39,7 @@ export default function DataTable() {
     const [employeeName, setEmployeeName] = useState()
     const [currentRowData, setCurrentRowData] = useState([])
     const [height, setHeight] = useState(window.innerHeight)
-    // const [number_nbmSelectPageValue, setNumber_nbmSelectPageValue] =
-    //     useState(5)
+
     //*Rows ans Columns
     const [rowData, setRowData] = useState() // Set rowData to Array of Objects, one Object per Row
     const [columnDefs] = useState([
@@ -59,19 +57,19 @@ export default function DataTable() {
             field: 'startDate',
             headerName: 'Start Date',
             type: ['dateColumn', 'nonEditableColumn'],
-            width: 200,
+            width: 170,
         },
         { field: 'department', headerName: 'Department' },
         {
             field: 'dateOfBirth',
             headerName: 'Date of Birth',
             type: ['dateColumn', 'nonEditableColumn'],
-            width: 200,
+            width: 170,
         },
         { field: 'street', headerName: 'Street' },
         { field: 'city', headerName: 'City' },
         { field: 'states', headerName: 'State' },
-        { field: 'zipCode', headerName: 'Zip Code' },
+        { field: 'zipCode', headerName: 'Zip Code', type: ['idZipCode'] },
     ])
 
     //*DefaultColDef sets props common to all Columns
@@ -79,10 +77,9 @@ export default function DataTable() {
         () => ({
             sortable: true,
             filter: 'agTextColumnFilter',
-            width: 140,
             floatingFilter: true,
             resizable: true,
-            minWidth: 120,
+            maxWidth: 250,
         }),
         []
     )
@@ -90,6 +87,7 @@ export default function DataTable() {
     const columnTypes = useMemo(() => {
         return {
             nonEditableColumn: { editable: false },
+            idZipCode: { resizable: false },
             idColumn: {
                 filter: false,
                 editable: false,
@@ -128,6 +126,7 @@ export default function DataTable() {
     }, [])
 
     const gridRef = useRef() // Optional - for accessing Grid's API
+
     const containerStyle = useMemo(
         () => ({ width: '100%', height: height > 700 ? '71%' : '85%' }),
         [height]
@@ -140,8 +139,10 @@ export default function DataTable() {
         setRowData(createRowsDatas(employees.employees))
         // //*Resize
         const updateDimensions = () => {
-            const currentHeight = window.innerHeight
+            const currentHeight = window.innerHeigh
             setHeight(currentHeight)
+            gridRef.current.api.paginationGoToPage(4)
+            gridRef.current.api.sizeColumnsToFit()
         }
         window.addEventListener('resize', updateDimensions)
 
@@ -150,10 +151,17 @@ export default function DataTable() {
 
     //*useCallback
     const cellClickedListener = useCallback((event) => {
-        console.log('cellClicked', event)
         setRowSelected(true)
         setEmployeeName(`${event.data.firstName} ${event.data.lastName}`)
         setCurrentRowData([event.data])
+    }, [])
+
+    const cellKeyDownListener = useCallback((event) => {
+        if (event.event.code === 'Enter') {
+            setRowSelected(true)
+            setEmployeeName(`${event.data.firstName} ${event.data.lastName}`)
+            setCurrentRowData([event.data])
+        }
     }, [])
 
     const deselectCurrentRow = useCallback((e) => {
@@ -162,7 +170,6 @@ export default function DataTable() {
     }, [])
 
     const paginationNumberFormatter = useCallback((params) => {
-        console.log(params)
         return params.value.toLocaleString()
     }, [])
 
@@ -180,6 +187,7 @@ export default function DataTable() {
 
     const onFirstDataRendered = useCallback((params) => {
         gridRef.current.api.paginationGoToPage(4)
+        gridRef.current.api.sizeColumnsToFit()
     }, [])
 
     //*functions
@@ -199,6 +207,7 @@ export default function DataTable() {
                         animateRows={true} // Optional - set to 'true' to have rows animate when sorted
                         rowSelection={'multiple'} // Options - allows click selection of rows
                         onCellClicked={cellClickedListener} // Optional - registering for Grid Event
+                        onCellKeyDown={cellKeyDownListener}
                         columnTypes={columnTypes}
                         columnHoverHighlight={true}
                         pagination={true}
@@ -210,50 +219,53 @@ export default function DataTable() {
                 </div>
             </div>
 
-            <StyledFeatureContent>
-                <StyledDeleteQuestionContent>
-                    <StyledQuestion>
-                        {rowSelected === true
-                            ? `Would you like to delete ${employeeName} ?`
-                            : ''}
-                    </StyledQuestion>
-                    <StyledButtonsContent>
-                        <Button
-                            type={'basic'}
-                            text={`yes`}
-                            icon={null}
-                            action={handleRemovedAnEmployee}
-                            isItSelected={rowSelected}
-                        />
-                        <Button
-                            type={'basic'}
-                            text={`no`}
-                            icon={null}
-                            action={deselectCurrentRow}
-                            isItSelected={rowSelected}
-                        />
-                    </StyledButtonsContent>
-                </StyledDeleteQuestionContent>
+            <div>
+                <StyledFeatureContent width={width} tabIndex={0}>
+                    <StyledDeleteQuestionContent width={width}>
+                        <StyledQuestion>
+                            {rowSelected === true
+                                ? `Would you like to delete ${employeeName} ?`
+                                : ''}
+                        </StyledQuestion>
+                        <StyledButtonsContent>
+                            <Button
+                                type={'basic'}
+                                text={`yes`}
+                                icon={null}
+                                action={handleRemovedAnEmployee}
+                                isItSelected={rowSelected}
+                            />
+                            <Button
+                                type={'basic'}
+                                text={`no`}
+                                icon={null}
+                                action={deselectCurrentRow}
+                                isItSelected={rowSelected}
+                            />
+                        </StyledButtonsContent>
+                    </StyledDeleteQuestionContent>
 
-                <div className="example-wrapper">
-                    <StyledPageSizeContent>
-                        <StyledPageSizeText>Page Size</StyledPageSizeText>
-                        <StyledBackgroundPageSizeSelect>
-                            <StyledPageSizeSelect
-                                onChange={onPageSizeChanged}
-                                id="page-size"
-                                defaultValue={'10'}
-                            >
-                                <option value="5">5</option>
-                                <option value="10">10</option>
-                                <option value="25">20</option>
-                                <option value="50">50</option>
-                                <option value="100">100</option>
-                            </StyledPageSizeSelect>
-                        </StyledBackgroundPageSizeSelect>
-                    </StyledPageSizeContent>
-                </div>
-            </StyledFeatureContent>
+                    <div className="example-wrapper">
+                        <StyledPageSizeContent>
+                            <StyledPageSizeText>Page Size</StyledPageSizeText>
+                            <StyledBackgroundPageSizeSelect>
+                                <StyledPageSizeSelect
+                                    onChange={onPageSizeChanged}
+                                    id="page-size"
+                                    defaultValue={'10'}
+                                >
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="25">20</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </StyledPageSizeSelect>
+                            </StyledBackgroundPageSizeSelect>
+                        </StyledPageSizeContent>
+                    </div>
+                </StyledFeatureContent>
+            </div>
+            {rowSelected === true && <Card rowData={currentRowData} />}
         </div>
     )
 }

@@ -6,5 +6,13 @@ export const StyledForm = styled.form`
 `
 
 export const StyledContentForm = styled.div`
-    min-width: 15%;
+    min-width: ${({ width }) => (width < 950 ? '35%' : 'inherit')};
+    ${({ width }) => width > 950 && 'width:600px; margin: 0 auto'};
+`
+export const StyledInputsGlobalContent = styled.div`
+    ${({ width }) =>
+        width > 950 && 'display: flex; justify-content: space-around'};
+`
+export const StyledInputsContent = styled.div`
+    ${({ width }) => width > 950 && 'width:45%'};
 `

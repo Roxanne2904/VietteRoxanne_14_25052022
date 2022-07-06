@@ -12,6 +12,7 @@ export const display = {
     center: 'center',
     column: 'column',
     relative: 'relative',
+    spaceBetween: 'space-between',
 }
 
 export const font = {

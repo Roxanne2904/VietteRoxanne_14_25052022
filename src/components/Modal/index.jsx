@@ -8,26 +8,58 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { selectToggleModal } from '../../utils/selectors'
 //*actions
 import { actionsToggleModal } from '../CreateEmployeesForm/toggleModalReducer'
+import { actionsEmployees } from '../CreateEmployeesForm/employeesReducer'
 //*styled
-import { StyledTxtModal, StyledModalContent, StyledModal } from './styled'
+import {
+    StyledTxtModal,
+    StyledModalContent,
+    StyledModal,
+    StyledButtonsContent,
+} from './styled'
 
-export default function Modal({ id, message }) {
+export default function Modal({ id, message, width }) {
     const dispatch = useDispatch()
     const toggleModal = useSelector(selectToggleModal)
 
     return (
         toggleModal === 'open' && (
             <StyledModal>
-                <StyledTxtModal id={`${id}`} toggleModal={toggleModal}>
+                <StyledTxtModal
+                    id={`${id}`}
+                    toggleModal={toggleModal}
+                    width={width}
+                >
                     {message}
-                    <Button
-                        type={'close'}
-                        text=""
-                        icon={faXmark}
-                        action={() =>
-                            dispatch(actionsToggleModal.toggleModal())
-                        }
-                    />
+                    {id === 'warning' ? (
+                        <StyledButtonsContent>
+                            <Button
+                                type={'basic'}
+                                text="yes"
+                                action={() => {
+                                    dispatch(
+                                        actionsEmployees.resetInitialState()
+                                    )
+                                    dispatch(actionsToggleModal.toggleModal())
+                                }}
+                            />
+                            <Button
+                                type={'basic'}
+                                text="no "
+                                action={() =>
+                                    dispatch(actionsToggleModal.toggleModal())
+                                }
+                            />
+                        </StyledButtonsContent>
+                    ) : (
+                        <Button
+                            type={'icon'}
+                            text=""
+                            icon={faXmark}
+                            action={() =>
+                                dispatch(actionsToggleModal.toggleModal())
+                            }
+                        />
+                    )}
                 </StyledTxtModal>
                 <StyledModalContent></StyledModalContent>
             </StyledModal>

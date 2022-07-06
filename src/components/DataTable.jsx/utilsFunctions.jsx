@@ -1,6 +1,5 @@
 export const createRowsDatas = (employeesArray) => {
     let rowsEmployees = []
-    // console.log(employeesArray)
     employeesArray.forEach((elt) => {
         rowsEmployees.push({
             firstName: `${elt.firstName}`,

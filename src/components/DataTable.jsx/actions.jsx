@@ -1,6 +1,5 @@
 import { selectEmployees } from '../../utils/selectors'
 import { actionsEmployees } from '../CreateEmployeesForm/employeesReducer'
-// import { employeesMap } from '../CreateEmployeesForm/actions'
 
 export const removedAnEmployee = (employee) => {
     return async (dispatch, getState) => {
@@ -14,15 +13,5 @@ export const removedAnEmployee = (employee) => {
             getId !== false &&
                 dispatch(actionsEmployees.editEmployeesDatas(getId))
         }
-        // console.log(employeeMap)
-        // const getEmployeeIndex = employees.filter((elt) => {
-        //     const currentFirstNameEmployees = elt.firstName
-        //     const currentLastNameEmployees = elt.lastName
-        //     return (
-        //         currentFirstNameEmployees === employee[0].firstName &&
-        //         currentLastNameEmployees === employee[0].lastName &&
-        //         employees.indexOf(elt)
-        //     )
-        // })
     }
 }

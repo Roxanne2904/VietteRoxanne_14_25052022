@@ -4,11 +4,16 @@ import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 //*components
-import Input from '../Input'
+import Inputs from '../Inputs'
 import Fieldset from '../Fieldset/index'
 import Button from '../Button'
 //*styled
-import { StyledForm, StyledContentForm } from './styled'
+import {
+    StyledForm,
+    StyledContentForm,
+    StyledInputsContent,
+    StyledInputsGlobalContent,
+} from './styled'
 //*service
 import { schema } from './shemaYUP'
 //*actions
@@ -17,7 +22,7 @@ import { actionsEmployees } from './employeesReducer'
 //*utils
 import { department } from '../../utils/DatasForInputSelect/index'
 
-export default function CreateEmployeesForm() {
+export default function CreateEmployeesForm({ currentWidth }) {
     //*Store with Redux and react-redux
     const dispatch = useDispatch()
     // const employees = useSelector(selectEmployees)
@@ -44,62 +49,91 @@ export default function CreateEmployeesForm() {
     const startDateRef = useRef(null)
 
     return (
-        <StyledContentForm>
+        <StyledContentForm width={currentWidth}>
             <StyledForm
                 action="#"
                 id="create-employee"
                 onSubmit={handleSubmit(onSubmit)}
             >
-                <Input
-                    name="firstName"
-                    type="text"
-                    label="First Name"
-                    register={register}
-                    errors={errors}
-                    control={control}
-                />
-                <Input
-                    name="lastName"
-                    type="text"
-                    label="Last Name"
-                    register={register}
-                    errors={errors}
-                    control={control}
-                />
-                <Input
-                    name="dateOfBirth"
-                    type="text"
-                    label="Date of Birth"
-                    register={register}
-                    errors={errors}
-                    control={control}
-                    myRef={dateOfBirthRef}
-                />
-                <Input
-                    name="startDate"
-                    type="text"
-                    label="Start Date"
-                    register={register}
-                    errors={errors}
-                    control={control}
-                    myRef={startDateRef}
-                />
-                <Fieldset
-                    legend="Address"
-                    register={register}
-                    errors={errors}
-                    control={control}
-                />
-                <Input
-                    name="department"
-                    type="select"
-                    label="Department"
-                    register={register}
-                    errors={errors}
-                    control={control}
-                    options={department}
-                />
-                <Button type="submit" text="Save" />
+                <StyledInputsGlobalContent width={currentWidth}>
+                    <StyledInputsContent width={currentWidth}>
+                        <Inputs
+                            width={currentWidth}
+                            name="firstName"
+                            type="text"
+                            label="First Name"
+                            register={register}
+                            errors={errors}
+                            control={control}
+                        />
+                        <Inputs
+                            width={currentWidth}
+                            name="lastName"
+                            type="text"
+                            label="Last Name"
+                            register={register}
+                            errors={errors}
+                            control={control}
+                        />
+                        <Inputs
+                            width={currentWidth}
+                            name="dateOfBirth"
+                            type="text"
+                            label="Date of Birth"
+                            register={register}
+                            errors={errors}
+                            control={control}
+                            myRef={dateOfBirthRef}
+                        />
+                        <Inputs
+                            width={currentWidth}
+                            name="startDate"
+                            type="text"
+                            label="Start Date"
+                            register={register}
+                            errors={errors}
+                            control={control}
+                            myRef={startDateRef}
+                        />
+                    </StyledInputsContent>
+                    <StyledInputsContent width={currentWidth}>
+                        <Fieldset
+                            type={[
+                                {
+                                    name: 'street',
+                                    type: 'text',
+                                    label: 'Street',
+                                },
+                                { name: 'city', type: 'text', label: 'City' },
+                                {
+                                    name: 'states',
+                                    type: 'select',
+                                    label: 'States',
+                                },
+                                {
+                                    name: 'zipCode',
+                                    type: 'text',
+                                    label: 'Zip Code',
+                                },
+                            ]}
+                            legend="Address"
+                            register={register}
+                            errors={errors}
+                            control={control}
+                        />
+                        <Inputs
+                            name="department"
+                            type="select"
+                            label="Department"
+                            register={register}
+                            errors={errors}
+                            control={control}
+                            options={department}
+                        />
+                    </StyledInputsContent>
+                </StyledInputsGlobalContent>
+
+                <Button type="submit" text="Save" width={currentWidth} />
             </StyledForm>
         </StyledContentForm>
     )

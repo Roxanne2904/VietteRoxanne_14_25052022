@@ -13,11 +13,11 @@ export const StyledInput = styled.input`
     border:${display.none};
     border-radius: ${radius.main};
     transition: all 300ms ease-in-out;
-    box-shadow: 0px 0px 2px ${colors.colorPrimary};
+    box-shadow: 0px 0px 3px ${colors.colorPrimary};
     &:focus {
         outline: none;
         transform: scale(1.05);
-        box-shadow: 0px 0px 3px ${colors.colorPrimary};
+        box-shadow: 0px 0px 4px ${colors.colorPrimary};
     }
 `
 export const StyledErrorMessage = styled.span`
@@ -37,6 +37,10 @@ export const StyledCalendarComponent = styled.div`
         state === 'true' ? `${display.flex}` : `${display.none}`};
     z-index: ${numbers.one};
     position: absolute;
+`
+export const StyledInputContent = styled.div`
+    ${({ width }) =>
+        width > 950 && '    margin-top: 30px;position: relative;bottom: 5px;'}
 `
 
 export const colourStyles = {

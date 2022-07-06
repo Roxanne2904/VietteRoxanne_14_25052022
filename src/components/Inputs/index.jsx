@@ -10,6 +10,7 @@ import {
     StyledLabel,
     StyledSelectLabelTxt,
     colourStyles,
+    StyledInputContent,
 } from './styled'
 //*reusableFunctions
 import {
@@ -19,6 +20,7 @@ import {
 } from './reusableFunctions'
 
 export default function Input({
+    width,
     name,
     type,
     label,
@@ -53,7 +55,7 @@ export default function Input({
                 const { ref, ...rest } = register(name, { required: true })
 
                 return (
-                    <div>
+                    <StyledInputContent width={width}>
                         <StyledLabel
                             htmlFor={`${name}`}
                         >{`${label}`}</StyledLabel>
@@ -97,20 +99,21 @@ export default function Input({
                                     right: '6px',
                                 }}
                             >
-                                <Calendar
+                                {/* <Calendar
                                     onChangeInputValue={validValue}
                                     myInputRef={myRef}
                                     mode={'blue'}
+                                    valueCustom={'1'}
                                     areDaysOutOfMonthAllowed={true}
                                     areSundaysAllowed={false}
-                                />
+                                /> */}
                             </div>
                         </StyledCalendarComponent>
-                    </div>
+                    </StyledInputContent>
                 )
             }
             return (
-                <div>
+                <StyledInputContent width={width}>
                     <StyledLabel htmlFor={`${name}`}>{`${label}`}</StyledLabel>
                     <Controller
                         name={`${name}`}
@@ -127,7 +130,7 @@ export default function Input({
                     <StyledErrorMessage>
                         {errors[name]?.message}
                     </StyledErrorMessage>
-                </div>
+                </StyledInputContent>
             )
         case 'select':
             return (

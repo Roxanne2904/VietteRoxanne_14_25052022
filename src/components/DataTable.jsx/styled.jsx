@@ -1,36 +1,39 @@
 import styled from 'styled-components'
 //*Utils
-import { colors } from '../../utils/css'
+import { colors, display, numbers, radius } from '../../utils/css'
 
 export const StyledFeatureContent = styled.div`
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0 20px 0;
+    display: ${display.flex};
+    justify-content: ${display.spaceBetween};
+    padding: ${numbers.ten}px ${numbers.zero} ${numbers.twenty}px
+        ${numbers.zero};
+    ${({ width }) => width < 950 && 'flex-direction:column;'}
 `
 export const StyledDeleteQuestionContent = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: ${display.spaceBetween};
+    ${({ width }) => width < 950 && 'margin-bottom:5px;'}
 `
 export const StyledQuestion = styled.div`
-    display: block;
-    margin-right: 10px;
+    display: ${display.block};
+    margin-right: ${numbers.ten}px;
     color: ${colors.colorPrimary};
 `
 export const StyledButtonsContent = styled.div`
-    display: flex;
+    display: ${display.flex};
 `
 export const StyledPageSizeContent = styled.div`
-    display: flex;
+    display: ${display.flex};
 `
 export const StyledPageSizeText = styled.span`
-    margin-right: 10px;
+    margin-right: ${numbers.ten}px;
     color: ${colors.colorPrimary};
     font-weight: bold;
     padding-top: 3px;
 `
 export const StyledBackgroundPageSizeSelect = styled.div`
     border: 2px solid ${colors.grey};
-    border-radius: 3px;
+    border-radius: ${radius.main};
 `
 export const StyledPageSizeSelect = styled.select`
     border: transparent;

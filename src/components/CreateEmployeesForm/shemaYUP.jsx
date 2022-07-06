@@ -1,4 +1,5 @@
 import * as yup from 'yup'
+import { myRegEx } from '../Inputs/reusableFunctions'
 
 const string_strIsRequired = `is required`
 
@@ -21,8 +22,14 @@ export const schema = yup.object().shape({
         .required('Department is required (from outter null check)'),
     firstName: yup.string().required(`First Name ${string_strIsRequired}`),
     lastName: yup.string().required(`Last name ${string_strIsRequired}`),
-    dateOfBirth: yup.string().required(`Date of birth ${string_strIsRequired}`),
-    startDate: yup.string().required(`Start date ${string_strIsRequired}`),
+    dateOfBirth: yup
+        .string()
+        .required(`Date of birth ${string_strIsRequired}`)
+        .matches(myRegEx, 'Must be DD/MM/YYYY or YYYY/MM/DD'),
+    startDate: yup
+        .string()
+        .required(`Start date ${string_strIsRequired}`)
+        .matches(myRegEx, 'Must be DD/MM/YYYY or YYYY/MM/DD'),
     street: yup.string().required(`Street ${string_strIsRequired}`),
     city: yup.string().required(`City ${string_strIsRequired}`),
     zipCode: yup

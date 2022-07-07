@@ -1,35 +1,49 @@
-export const Card = ({ rowData }) => {
+import {
+    StyledUlBlockDatasEmployee,
+    StyledLiBlockData,
+    StyledCategories,
+} from './styled'
+
+export const Card = ({ rowData, width }) => {
     if (rowData.length !== 0) {
         return (
-            <ul>
-                <li>
-                    <span>FN:</span> {rowData[0].firstName}{' '}
-                </li>
-                <li>
-                    <span>LN:</span> {rowData[0].lastName}{' '}
-                </li>
-                <li>
-                    <span>City:</span> {rowData[0].city}{' '}
-                </li>
-                <li>
-                    <span>Depmt:</span> {rowData[0].department}{' '}
-                </li>
-                <li>
-                    <span>S-Date:</span> {rowData[0].startDate}{' '}
-                </li>
-                <li>
-                    <span>D-O-Birth:</span> {rowData[0].dateOfBirth}{' '}
-                </li>
-                <li>
-                    <span>State:</span> {rowData[0].states}{' '}
-                </li>
-                <li>
-                    <span>Street:</span> {rowData[0].street}{' '}
-                </li>
-                <li>
-                    <span>ZipC:</span> {rowData[0].zipCode}{' '}
-                </li>
-            </ul>
+            <StyledUlBlockDatasEmployee width={width}>
+                <StyledLiBlockData>
+                    <StyledCategories>FN:</StyledCategories>{' '}
+                    {rowData[0].firstName}{' '}
+                </StyledLiBlockData>
+                <StyledLiBlockData>
+                    <StyledCategories>LN:</StyledCategories>{' '}
+                    {rowData[0].lastName}{' '}
+                </StyledLiBlockData>
+                <StyledLiBlockData>
+                    <StyledCategories>City:</StyledCategories> {rowData[0].city}{' '}
+                </StyledLiBlockData>
+                <StyledLiBlockData>
+                    <StyledCategories>Depmt:</StyledCategories>{' '}
+                    {rowData[0].department}{' '}
+                </StyledLiBlockData>
+                <StyledLiBlockData>
+                    <StyledCategories>S-Date:</StyledCategories>{' '}
+                    {rowData[0].startDate}{' '}
+                </StyledLiBlockData>
+                <StyledLiBlockData>
+                    <StyledCategories>D-O-Birth:</StyledCategories>{' '}
+                    {rowData[0].dateOfBirth}{' '}
+                </StyledLiBlockData>
+                <StyledLiBlockData>
+                    <StyledCategories>State:</StyledCategories>{' '}
+                    {rowData[0].states}{' '}
+                </StyledLiBlockData>
+                <StyledLiBlockData>
+                    <StyledCategories>Street:</StyledCategories>{' '}
+                    {rowData[0].street}{' '}
+                </StyledLiBlockData>
+                <StyledLiBlockData>
+                    <StyledCategories>ZipC:</StyledCategories>{' '}
+                    {rowData[0].zipCode}{' '}
+                </StyledLiBlockData>
+            </StyledUlBlockDatasEmployee>
         )
     }
 }

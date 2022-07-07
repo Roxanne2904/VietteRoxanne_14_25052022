@@ -25,3 +25,6 @@ export const StyledGlobalContent = styled.div`
     display: flex;
     justify-content: center;
 `
+export const StyledEmployeeListMain = styled.main`
+    ${({ heigth }) => heigth <= 700 && 'margin-bottom:100px;'}
+`

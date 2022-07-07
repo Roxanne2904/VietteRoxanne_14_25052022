@@ -10,7 +10,9 @@ export const StyledLink = styled(Link)`
     ${LINK_PATTERN}
     ${(props) =>
         props.$headerLink &&
-        `display:flex; align-items:center; margin:0 25px 0 0`}
+        `display:flex; align-items:center; margin:0 ${
+            props.width < 500 ? '20px' : '50px'
+        } 0 0`}
 `
 
 export const StyledLinkTxt = styled.span`

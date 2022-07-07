@@ -8,7 +8,8 @@ export const StyledTitle = styled.div`
     color: ${colors.colorPrimary};
     font-family: Roboto;
     h1 {
-        margin: 10px 25px;
+        margin: ${({ width }) =>
+            width < 500 ? '10px 20px' : '20px 10px 20px 50px'};
         font-size: 2.3rem;
         color: ${colors.colorPrimary};
     }

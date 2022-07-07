@@ -34,7 +34,7 @@ export const StyledModalContent = styled.div`
 export const StyledModal = styled.div`
     ${POSITION_PATTERN}
 `
-export const StyledButtonsContent = styled.div`
+export const StyledButtonsContent = styled.span`
     display: flex;
     justify-content: flex-end;
     margin-top: 10px;

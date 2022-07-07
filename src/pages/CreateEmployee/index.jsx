@@ -43,6 +43,7 @@ export default function CreateEmployee() {
                     }
                     linkTo="/employee-list"
                     icon={faUsers}
+                    width={width}
                 />
                 <StyledContainer>
                     <Title text="Create Employee" type="h2" />

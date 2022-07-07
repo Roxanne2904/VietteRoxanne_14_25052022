@@ -79,9 +79,10 @@ export default function DataTable({ width }) {
             filter: 'agTextColumnFilter',
             floatingFilter: true,
             resizable: true,
+            minWidth: width < 1030 && 150,
             maxWidth: 250,
         }),
-        []
+        [width]
     )
     //*columnType
     const columnTypes = useMemo(() => {
@@ -128,7 +129,7 @@ export default function DataTable({ width }) {
     const gridRef = useRef() // Optional - for accessing Grid's API
 
     const containerStyle = useMemo(
-        () => ({ width: '100%', height: height > 700 ? '71%' : '85%' }),
+        () => ({ width: '100%', height: height > 700 ? '71%' : '75%' }),
         [height]
     )
     const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), [])
@@ -139,15 +140,14 @@ export default function DataTable({ width }) {
         setRowData(createRowsDatas(employees.employees))
         // //*Resize
         const updateDimensions = () => {
-            const currentHeight = window.innerHeigh
+            const currentHeight = window.innerHeight
             setHeight(currentHeight)
-            gridRef.current.api.paginationGoToPage(4)
-            gridRef.current.api.sizeColumnsToFit()
+            width > 1030 && gridRef.current.api.sizeColumnsToFit()
         }
         window.addEventListener('resize', updateDimensions)
 
         return () => window.removeEventListener('resize', updateDimensions)
-    }, [employees.employees])
+    }, [employees.employees, width])
 
     //*useCallback
     const cellClickedListener = useCallback((event) => {
@@ -222,7 +222,7 @@ export default function DataTable({ width }) {
             <div>
                 <StyledFeatureContent width={width} tabIndex={0}>
                     <StyledDeleteQuestionContent width={width}>
-                        <StyledQuestion>
+                        <StyledQuestion width={width}>
                             {rowSelected === true
                                 ? `Would you like to delete ${employeeName} ?`
                                 : ''}
@@ -265,7 +265,9 @@ export default function DataTable({ width }) {
                     </div>
                 </StyledFeatureContent>
             </div>
-            {rowSelected === true && <Card rowData={currentRowData} />}
+            {rowSelected === true && (
+                <Card rowData={currentRowData} width={width} />
+            )}
         </div>
     )
 }

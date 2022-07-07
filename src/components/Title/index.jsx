@@ -4,7 +4,7 @@ export default function Title({ text, type, width }) {
     switch (type) {
         case 'h1':
             return (
-                <StyledTitle>
+                <StyledTitle width={width}>
                     <h1>{text}</h1>
                 </StyledTitle>
             )

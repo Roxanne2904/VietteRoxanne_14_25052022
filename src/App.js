@@ -8,6 +8,12 @@ import { colors } from './utils/css/index.jsx'
 export const StyledGobal = createGlobalStyle`
 *{
   font-family: 'robotoregular';
+  
+}
+
+ul{
+  margin:0;
+  padding:0;
 }
 
 body{

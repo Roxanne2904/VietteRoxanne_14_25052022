@@ -18,6 +18,7 @@ export const StyledQuestion = styled.div`
     display: ${display.block};
     margin-right: ${numbers.ten}px;
     color: ${colors.colorPrimary};
+    ${({ width }) => width < 500 && 'font-size:0.85rem'}
 `
 export const StyledButtonsContent = styled.div`
     display: ${display.flex};

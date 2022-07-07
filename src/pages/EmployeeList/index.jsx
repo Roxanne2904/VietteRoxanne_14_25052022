@@ -12,6 +12,7 @@ import {
     StyledDataTableContent,
     StyledButtonAndTitle,
     StyledGlobalContent,
+    StyledEmployeeListMain,
 } from './styled'
 //*Components
 import Title from '../../components/Title/index.jsx'
@@ -26,24 +27,28 @@ import Button from '../../components/Button/index.jsx'
 export default function EmployeeLists() {
     const dispatch = useDispatch()
     const [width, setWidth] = useState(window.innerWidth)
+    const [heigth, setHeigth] = useState(window.innerHeight)
     //*Use Effect
     useEffect(() => {
         //*Resize
         const updateDimensions = () => {
             const currentWidth = window.innerWidth
+            const currentHeight = window.innerHeight
             setWidth(currentWidth)
+            setHeigth(currentHeight)
         }
         window.addEventListener('resize', updateDimensions)
 
         return () => window.removeEventListener('resize', updateDimensions)
-    }, [width])
+    }, [width, heigth])
 
     return (
-        <main>
+        <StyledEmployeeListMain heigth={heigth}>
             <Header
                 linkTxt={width > 950 ? 'Create a new Employee' : 'new Employee'}
                 linkTo="/"
                 icon={faUserPlus}
+                width={width}
             />
             <StyledGlobalContent>
                 <StyledEmployeeListPageContent>
@@ -75,6 +80,6 @@ export default function EmployeeLists() {
                 message={'Are you sure you want to delete all your employees?'}
                 width={width}
             />
-        </main>
+        </StyledEmployeeListMain>
     )
 }

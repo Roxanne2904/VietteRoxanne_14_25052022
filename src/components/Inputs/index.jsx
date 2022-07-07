@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { Controller } from 'react-hook-form'
 import Select from 'react-select'
-// import { Calendar } from 'rv-react-plugin-calendar'
+import { Calendar } from 'rv-react-plugin-calendar'
 //*styled
 import {
     StyledInput,
@@ -99,14 +99,14 @@ export default function Input({
                                     right: '6px',
                                 }}
                             >
-                                {/* <Calendar
+                                <Calendar
                                     onChangeInputValue={validValue}
                                     myInputRef={myRef}
                                     mode={'blue'}
                                     valueCustom={'1'}
                                     areDaysOutOfMonthAllowed={true}
                                     areSundaysAllowed={false}
-                                /> */}
+                                />
                             </div>
                         </StyledCalendarComponent>
                     </StyledInputContent>

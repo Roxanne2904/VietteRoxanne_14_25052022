@@ -7852,10 +7852,10 @@ run-parallel@^1.1.9:
   dependencies:
     queue-microtask "^1.2.2"
 
-rv-react-plugin-calendar@^1.0.11:
-  version "1.0.11"
-  resolved "https://registry.npmjs.org/rv-react-plugin-calendar/-/rv-react-plugin-calendar-1.0.11.tgz"
-  integrity sha512-ch0mv0TUiuO0XDgAdG0Wq2xdJe3pcEwFsoRQxanudns9ozz2EzrGnhTHC6Vk2K9NWet61XZm+oVzJQSfgcAx4g==
+rv-react-plugin-calendar@^1.0.12:
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/rv-react-plugin-calendar/-/rv-react-plugin-calendar-1.0.12.tgz#793322b311f9dc0377167451d0ad9fbb27d96b70"
+  integrity sha512-H5tqdxnEWAMneCj5KQpMQB5frsZSrN4G3BRqVk6fsSz83KrYo91kTHWsobomaWOmkgXpJ1jiUyJf+M7tJv7GRw==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^6.1.1"
     "@fortawesome/free-solid-svg-icons" "^6.1.1"

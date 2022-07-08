@@ -1,7 +1,15 @@
 //*styled
 import styled from 'styled-components'
 //*utils
-import { colors, radius, display, font, numbers } from '../../utils/css'
+import {
+    colors,
+    radius,
+    display,
+    font,
+    numbers,
+    POSITION_RELATIVE,
+    COLOR_PRIMARY,
+} from '../../utils/css'
 
 export const StyledAddress = styled.fieldset`
     margin-top: ${numbers.ten}px;
@@ -12,10 +20,10 @@ export const StyledAddress = styled.fieldset`
 `
 
 export const StyledLegend = styled.legend`
-    position: ${display.relative};
+    ${POSITION_RELATIVE}
     top: 25px;
     font-size: ${font.main};
-    color: ${colors.colorPrimary};
+    ${COLOR_PRIMARY}
     margin: ${numbers.twenty}px;
     right: ${numbers.twenty}px;
     font-weight: 600;

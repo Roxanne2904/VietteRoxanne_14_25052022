@@ -5,7 +5,12 @@ import Inputs from '../Inputs'
 import { states } from '../../utils/DatasForInputSelect/index'
 //*Styled
 import { StyledAddress, StyledLegend } from './styled'
+import PropTypes from 'prop-types'
 
+/**
+ * This returns a Fieldset component.
+ * @returns { HTMLElements } It return a React Component.
+ */
 export default function Fieldset({ type, legend, register, errors, control }) {
     return (
         <StyledAddress className="address">
@@ -46,4 +51,18 @@ export default function Fieldset({ type, legend, register, errors, control }) {
             />
         </StyledAddress>
     )
+}
+
+Fieldset.propTypes = {
+    type: PropTypes.arrayOf(
+        PropTypes.shape({
+            name: PropTypes.string.isRequired,
+            type: PropTypes.string.isRequired,
+            label: PropTypes.string.isRequired,
+        })
+    ).isRequired,
+    legend: PropTypes.string.isRequired,
+    register: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired,
+    control: PropTypes.object.isRequired,
 }

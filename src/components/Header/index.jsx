@@ -6,7 +6,12 @@ import {
     StyledLinkIcon,
 } from './styled'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import PropTypes from 'prop-types'
 
+/**
+ * This returns a header component.
+ * @returns { HTMLElements } It return a React Component.
+ */
 export const Header = ({ linkTxt, linkTo, icon, width }) => {
     return (
         <StyledHeader>
@@ -25,3 +30,18 @@ export const Header = ({ linkTxt, linkTo, icon, width }) => {
 }
 
 export default Header
+
+Header.propTypes = {
+    linkTxt: PropTypes.string.isRequired,
+    linkTo: PropTypes.string.isRequired,
+    icon: PropTypes.shape({
+        icon: PropTypes.array.isRequired,
+        iconName: PropTypes.string.isRequired,
+        prefix: PropTypes.string.isRequired,
+    }),
+    width: PropTypes.number.isRequired,
+}
+
+Header.defaultProps = {
+    width: window.innerWidth,
+}

@@ -1,11 +1,14 @@
 import styled from 'styled-components'
 //*CSS
 import {
-    MIN_WIDTH_PATTERN,
+    font,
     colors,
     radius,
     display,
     numbers,
+    MIN_WIDTH_PATTERN,
+    DISPLAY_BLOCK,
+    POSITION_RELATIVE,
 } from '../../utils/css/index'
 
 export const StyledInput = styled.input`
@@ -14,6 +17,8 @@ export const StyledInput = styled.input`
     border-radius: ${radius.main};
     transition: all 300ms ease-in-out;
     box-shadow: 0px 0px 3px ${colors.colorPrimary};
+    margin: 5px 0 0 0;
+    padding: 7px;
     &:focus {
         outline: none;
         transform: scale(1.05);
@@ -22,36 +27,45 @@ export const StyledInput = styled.input`
 `
 export const StyledErrorMessage = styled.span`
     color: red;
-    font-size: 0.8rem;
+    font-size: ${font.main};
 `
-export const StyledLabel = styled.label`
-    margin-top: 0.5rem;
-    margin-bottom: 10px;
-`
+export const StyledLabel = styled.label``
 export const StyledSelectLabelTxt = styled.span`
-    display: ${display.block};
-    margin-bottom: 0.5rem;
+    ${DISPLAY_BLOCK}
+    margin: 15px 0 5px 0;
 `
 export const StyledCalendarComponent = styled.div`
     display: ${({ state }) =>
         state === 'true' ? `${display.flex}` : `${display.none}`};
     z-index: ${numbers.one};
-    position: absolute;
+    position: ${display.absolute};
 `
 export const StyledInputContent = styled.div`
-    ${({ width }) =>
-        width > 950 && '    margin-top: 30px;position: relative;bottom: 5px;'}
+    ${POSITION_RELATIVE}
+    bottom: 5px;
+    margin-top: ${({ name }) => {
+        if (
+            name === 'firstName' ||
+            name === 'lastName' ||
+            name === 'dateOfBirth' ||
+            name === 'startDate'
+        ) {
+            return '29px'
+        } else {
+            return '15px'
+        }
+    }};
 `
 
 export const colourStyles = {
     control: (styles) => ({
         ...styles,
         borderColor: `${colors.darkerGrey}`,
-        boxShadow: `0 0 0 1px ${colors.grey}`,
+        boxShadow: `0 0 0 ${numbers.one}px ${colors.grey}`,
         cursor: 'pointer',
         ':hover': {
             borderColor: `${colors.colorPrimary}`,
-            boxShadow: `0 0 0 1px ${colors.colorPrimary}`,
+            boxShadow: `0 0 0 ${numbers.one}px ${colors.colorPrimary}`,
         },
     }),
     option: (styles, { isDisabled, isFocused, isSelected }) => ({

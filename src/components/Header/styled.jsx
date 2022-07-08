@@ -1,24 +1,31 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { LINK_PATTERN, display } from '../../utils/css'
+import {
+    LINK_PATTERN,
+    DISPLAY_BLOCK,
+    DISPLAY_FLEX,
+    ALIGN_ITEMS_CENTER,
+    JUSTIFY_CONTENT_SPACE_BETWEEN,
+    numbers,
+} from '../../utils/css'
 
 export const StyledHeader = styled.header`
-    display: ${display.flex};
-    justify-content: ${display.spaceBetween};
+    ${DISPLAY_FLEX}
+    ${JUSTIFY_CONTENT_SPACE_BETWEEN}
 `
 export const StyledLink = styled(Link)`
     ${LINK_PATTERN}
     ${(props) =>
         props.$headerLink &&
-        `display:flex; align-items:center; margin:0 ${
-            props.width < 500 ? '20px' : '50px'
-        } 0 0`}
+        `${DISPLAY_FLEX}; ${ALIGN_ITEMS_CENTER}; margin:${numbers.zero} ${
+            props.width < 500 ? `${numbers.twenty}px` : '50px'
+        } ${numbers.zero} ${numbers.zero}`}
 `
 
 export const StyledLinkTxt = styled.span`
-    display: block;
+    ${DISPLAY_BLOCK}
 `
 export const StyledLinkIcon = styled.span`
-    display: block;
-    margin: 0 10px 0 0;
+    ${DISPLAY_BLOCK}
+    margin: ${numbers.zero} ${numbers.ten}px ${numbers.zero} ${numbers.zero};
 `

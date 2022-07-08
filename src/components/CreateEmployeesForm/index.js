@@ -1,5 +1,4 @@
 import { useRef } from 'react'
-// import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -16,18 +15,19 @@ import {
 } from './styled'
 //*service
 import { schema } from './shemaYUP'
-//*actions
+//*actions-Redux
 import { actionsToggleModal } from './toggleModalReducer'
 import { actionsEmployees } from './employeesReducer'
 //*utils
 import { department } from '../../utils/DatasForInputSelect/index'
+import PropTypes from 'prop-types'
 
+/**
+ * it returns a form component in particular one to create a new employee.
+ * @returns { HTMLElements } It return a React Component.
+ */
 export default function CreateEmployeesForm({ currentWidth }) {
-    //*Store with Redux and react-redux
-    const dispatch = useDispatch()
-    // const employees = useSelector(selectEmployees)
-
-    //* react-hook-form
+    const dispatch = useDispatch() //*Redux
     const {
         register,
         handleSubmit,
@@ -35,18 +35,18 @@ export default function CreateEmployeesForm({ currentWidth }) {
         control,
     } = useForm({
         resolver: yupResolver(schema),
-    })
+    }) //*React-Hook-Form
+
+    const dateOfBirthRef = useRef(null)
+    const startDateRef = useRef(null)
 
     const onSubmit = (data) => {
         let i = parseInt(Math.random().toString().split('.')[1]) + 1
         let newData = { ...data, index: i }
-        console.log(newData)
+
         dispatch(actionsEmployees.addAnEmployee(newData))
         dispatch(actionsToggleModal.toggleModal())
     }
-
-    const dateOfBirthRef = useRef(null)
-    const startDateRef = useRef(null)
 
     return (
         <StyledContentForm width={currentWidth}>
@@ -137,4 +137,12 @@ export default function CreateEmployeesForm({ currentWidth }) {
             </StyledForm>
         </StyledContentForm>
     )
+}
+
+CreateEmployeesForm.propTypes = {
+    currentWidth: PropTypes.number.isRequired,
+}
+
+CreateEmployeesForm.defaultProps = {
+    currentWidth: window.innerWidth,
 }

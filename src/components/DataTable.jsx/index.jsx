@@ -1,21 +1,19 @@
 import { useState, useRef, useMemo, useCallback, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { AgGridReact } from 'ag-grid-react'
-import 'ag-grid-community/dist/styles/ag-grid.css' //!core grid CSS, always needed
+import 'ag-grid-community/dist/styles/ag-grid.css'
 //!The first ag-grid.css is always needed. It's the core structural CSS needed by the grid.
 //!Without this, the Grid will not work.
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css' //!optional theme CSS
 //*components
 import Button from '../../components/Button'
 import Card from '../../components/Card/index'
-//* selector
+//* selector-Redux
 import { selectEmployees } from '../../utils/selectors'
-//*actions
+//*actions-Redux
 import { removedAnEmployee } from './actions'
 //*utilsFunctions
 import { createRowsDatas } from './utilsFunctions'
-//*Utils
-
 //*Styled
 import {
     StyledFeatureContent,
@@ -27,20 +25,21 @@ import {
     StyledPageSizeContent,
     StyledBackgroundPageSizeSelect,
 } from './styled.jsx'
+import PropTypes from 'prop-types'
 
+/**
+ * This returns a DataTable component.
+ * @returns { HTMLElements } It return a React Component.
+ */
 export default function DataTable({ width }) {
-    //*store redux;
-    const dispatch = useDispatch()
-    const employees = useSelector(selectEmployees)
-    //*---
+    const dispatch = useDispatch() //*Redux
+    const employees = useSelector(selectEmployees) //*Redux
 
-    //*Local State
     const [rowSelected, setRowSelected] = useState(false)
     const [employeeName, setEmployeeName] = useState()
     const [currentRowData, setCurrentRowData] = useState([])
     const [height, setHeight] = useState(window.innerHeight)
 
-    //*Rows ans Columns
     const [rowData, setRowData] = useState() // Set rowData to Array of Objects, one Object per Row
     const [columnDefs] = useState([
         {
@@ -72,7 +71,6 @@ export default function DataTable({ width }) {
         { field: 'zipCode', headerName: 'Zip Code', type: ['idZipCode'] },
     ])
 
-    //*DefaultColDef sets props common to all Columns
     const defaultColDef = useMemo(
         () => ({
             sortable: true,
@@ -84,7 +82,7 @@ export default function DataTable({ width }) {
         }),
         [width]
     )
-    //*columnType
+
     const columnTypes = useMemo(() => {
         return {
             nonEditableColumn: { editable: false },
@@ -127,18 +125,15 @@ export default function DataTable({ width }) {
     }, [])
 
     const gridRef = useRef() // Optional - for accessing Grid's API
-
     const containerStyle = useMemo(
         () => ({ width: '100%', height: height > 700 ? '71%' : '75%' }),
         [height]
     )
     const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), [])
 
-    //*Use Effect
     useEffect(() => {
-        //*update Rows Datas
         setRowData(createRowsDatas(employees.employees))
-        // //*Resize
+
         const updateDimensions = () => {
             const currentHeight = window.innerHeight
             setHeight(currentHeight)
@@ -190,7 +185,6 @@ export default function DataTable({ width }) {
         gridRef.current.api.sizeColumnsToFit()
     }, [])
 
-    //*functions
     const handleRemovedAnEmployee = () => {
         dispatch(removedAnEmployee(currentRowData))
     }
@@ -270,4 +264,12 @@ export default function DataTable({ width }) {
             )}
         </div>
     )
+}
+
+DataTable.propTypes = {
+    width: PropTypes.number.isRequired,
+}
+
+DataTable.defaultProps = {
+    width: window.innerWidth,
 }

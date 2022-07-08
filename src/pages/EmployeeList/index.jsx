@@ -24,22 +24,26 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { actionsToggleModal } from '../../components/CreateEmployeesForm/toggleModalReducer'
 import Button from '../../components/Button/index.jsx'
 
+/**
+ * Returns employees list page display.
+ * @returns { HTMLElements } It return a React Component.
+ */
 export default function EmployeeLists() {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch() //*Redux
     const [width, setWidth] = useState(window.innerWidth)
     const [heigth, setHeigth] = useState(window.innerHeight)
-    //*Use Effect
+
     useEffect(() => {
-        //*Resize
-        const updateDimensions = () => {
+        const updateCurrentWidthAndHeight = () => {
             const currentWidth = window.innerWidth
             const currentHeight = window.innerHeight
             setWidth(currentWidth)
             setHeigth(currentHeight)
         }
-        window.addEventListener('resize', updateDimensions)
+        window.addEventListener('resize', updateCurrentWidthAndHeight)
 
-        return () => window.removeEventListener('resize', updateDimensions)
+        return () =>
+            window.removeEventListener('resize', updateCurrentWidthAndHeight)
     }, [width, heigth])
 
     return (
@@ -58,8 +62,8 @@ export default function EmployeeLists() {
                                 dispatch(actionsToggleModal.toggleModal())
                             }
                             type={width < 950 ? 'icon' : 'basic'}
-                            text={width < 950 ? null : 'remove all employees'}
-                            icon={width < 950 ? faTrash : null}
+                            text={width < 950 ? '' : 'remove all employees'}
+                            icon={width < 950 ? faTrash : {}}
                             trash={true}
                         />
                         <div>

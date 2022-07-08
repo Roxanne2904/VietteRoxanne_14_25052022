@@ -1,12 +1,13 @@
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
+import PropTypes from 'prop-types'
 //*component
 import Button from '../Button'
 //*font Awesome
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
-//*selectors
+//*selectors-Redux
 import { selectToggleModal } from '../../utils/selectors'
-//*actions
+//*actions-Redux
 import { actionsToggleModal } from '../CreateEmployeesForm/toggleModalReducer'
 import { actionsEmployees } from '../CreateEmployeesForm/employeesReducer'
 //*styled
@@ -17,10 +18,14 @@ import {
     StyledButtonsContent,
 } from './styled'
 
+/**
+ * This component returns a modal.
+ * @returns { HTMLElements } It return a React Component.
+ */
 export default function Modal({ id, message, width }) {
     const dispatch = useDispatch()
     const toggleModal = useSelector(selectToggleModal)
-
+    console.log(message)
     return (
         toggleModal === 'open' && (
             <StyledModal>
@@ -65,4 +70,14 @@ export default function Modal({ id, message, width }) {
             </StyledModal>
         )
     )
+}
+
+Modal.propTypes = {
+    id: PropTypes.string.isRequired,
+    message: PropTypes.string.isRequired,
+    width: PropTypes.number.isRequired,
+}
+
+Modal.defaultProps = {
+    width: window.innerWidth,
 }

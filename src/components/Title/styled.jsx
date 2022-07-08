@@ -1,21 +1,40 @@
 import styled from 'styled-components'
-import { colors, display } from '../../utils/css'
+import {
+    numbers,
+    DISPLAY_FLEX,
+    ALIGN_ITEMS_CENTER,
+    JUSTIFY_CONTENT_CENTER,
+    COLOR_PRIMARY,
+    POSITION_RELATIVE,
+} from '../../utils/css'
 
 export const StyledTitle = styled.div`
-    display: ${display.flex};
-    align-items: ${display.center};
-    justify-content: ${display.center};
-    color: ${colors.colorPrimary};
+    ${DISPLAY_FLEX}
+    ${ALIGN_ITEMS_CENTER}
+    ${JUSTIFY_CONTENT_CENTER}
+    ${COLOR_PRIMARY}
     font-family: Roboto;
     h1 {
         margin: ${({ width }) =>
-            width < 500 ? '10px 20px' : '20px 10px 20px 50px'};
+            width < 500
+                ? `${numbers.ten}px ${numbers.twenty}px`
+                : `${numbers.twenty}px ${numbers.ten}px ${numbers.twenty}px 50px`};
         font-size: 2.3rem;
-        color: ${colors.colorPrimary};
+        ${COLOR_PRIMARY}
     }
 `
 export const StyledSecondariesTitle = styled.div`
-    color: ${colors.colorPrimary};
-    font-size: 1.2rem;
-    ${({ width }) => width < 950 && 'font-size:0.9rem;'}
+    ${COLOR_PRIMARY}
+    font-size: ${(props) =>
+        props.text === 'Create Employee'
+            ? '1.2rem'
+            : props.width < 950
+            ? '0.9rem'
+            : '1.2rem'};
+    h2 {
+        ${(props) =>
+            props.text === 'Create Employee' &&
+            props.width < 950 &&
+            `margin: 5px 0; ${POSITION_RELATIVE}; top:${numbers.twenty}px;`}
+    }
 `

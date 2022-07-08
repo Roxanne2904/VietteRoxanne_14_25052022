@@ -7,31 +7,30 @@ import Modal from '../../components/Modal'
 import Title from '../../components/Title'
 //*styled
 import { StyledContainer } from './Styled'
-//*select
+//*selectors-Redux
 import { selectEmployees } from '../../utils/selectors'
-// //*actions
-// import { actionsEmployees } from '../../components/CreateEmployeesForm/employeesReducer'
-
 //*font-awesome
 import { faUsers } from '@fortawesome/free-solid-svg-icons'
 
-export default function CreateEmployee() {
-    //*UseState()
-    const [width, setWidth] = useState(window.innerWidth)
-    //*Redux
-    const employees = useSelector(selectEmployees)
-    const { message } = employees
+/**
+ * Returns employees creation page display.
+ * @returns { HTMLElements } It return a React Component.
+ */
 
-    //*Use Effect
+export default function CreateEmployee() {
+    const [width, setWidth] = useState(window.innerWidth)
+
+    const employees = useSelector(selectEmployees) //*Redux
+    const { message } = employees //*Redux
+
     useEffect(() => {
-        //*Resize
-        const updateDimensions = () => {
+        const updateCurrentWidth = () => {
             const currentWidth = window.innerWidth
             setWidth(currentWidth)
         }
-        window.addEventListener('resize', updateDimensions)
+        window.addEventListener('resize', updateCurrentWidth)
 
-        return () => window.removeEventListener('resize', updateDimensions)
+        return () => window.removeEventListener('resize', updateCurrentWidth)
     }, [width])
 
     return (
@@ -46,12 +45,12 @@ export default function CreateEmployee() {
                     width={width}
                 />
                 <StyledContainer>
-                    <Title text="Create Employee" type="h2" />
+                    <Title text="Create Employee" type="h2" width={width} />
                     <CreateEmployeesForm currentWidth={width} />
                 </StyledContainer>
                 <Modal
                     id="confirmation"
-                    message={message !== null && message}
+                    message={message !== null && message !== false && message}
                     width={width}
                 />
             </main>

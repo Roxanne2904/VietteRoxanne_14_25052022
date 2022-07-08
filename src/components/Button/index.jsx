@@ -1,51 +1,13 @@
-import styled from 'styled-components'
-import { colors } from '../../utils/css'
 //*fontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+//*Styled
+import { StyledSubmitButton, StyledCloseButton, StyledXmark } from './styled'
+import PropTypes from 'prop-types'
 
-const StyledSubmitButton = styled.button`
-    align-self: center;
-    margin: ${(props) => (props.$basic ? '0 5px ' : '20px 0 50px 0')};
-    border: none;
-    background: ${colors.colorPrimary};
-    padding: ${(props) =>
-        props.$basic
-            ? '5px 10px'
-            : props.width > 950
-            ? '10px 40px'
-            : '10px 20px'};
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    ${({ isSelected }) =>
-        isSelected === false ? 'display: none' : 'display: block'};
-    position: relative;
-    bottom: ${(props) =>
-        props.$basic
-            ? props.$rmvEmployee
-                ? '3px'
-                : 'inherit'
-            : props.width > 950
-            ? '69px'
-            : 'inherit'};
-    ${({ width }) => width > 950 && 'right: 70px;'}
-    border: none;
-`
-const StyledCloseButton = styled.button`
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    ${({ trash }) => !trash && 'position: absolute;top: -13px;right: -13px;'}
-    cursor: pointer;
-    color: white;
-    background: ${({ trash }) => (trash ? colors.colorPrimary : '#000000')};
-    border: none;
-`
-
-const StyledXmark = styled.span`
-    font-size: 1rem;
-`
-
+/**
+ * it returns a button component.
+ * @returns { HTMLElements } It return a React Component.
+ */
 export default function Button({
     type,
     text,
@@ -94,4 +56,21 @@ export default function Button({
         default:
             return
     }
+}
+
+Button.propTypes = {
+    type: PropTypes.string,
+    text: PropTypes.string,
+    icon: PropTypes.object,
+    action: PropTypes.func,
+    isItSelected: PropTypes.bool,
+    width: PropTypes.number.isRequired,
+    trash: PropTypes.bool,
+}
+
+Button.defaultProps = {
+    width: window.innerWidth,
+    trash: false,
+    isItSelected: undefined,
+    icon: {},
 }

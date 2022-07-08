@@ -1,12 +1,17 @@
 import styled from 'styled-components'
-
 //*Utils
-import { display } from '../../utils/css/index'
+import {
+    numbers,
+    DISPLAY_FLEX,
+    FLEX_DIRECTION_COLUMN,
+    ALIGN_ITEMS_CENTER,
+    JUSTIFY_CONTENT_CENTER,
+} from '../../utils/css/index'
 
 export const StyledContainer = styled.div`
-    display: ${display.flex};
-    flex-direction: ${display.column};
-    align-items: ${display.center};
-    justify-content: ${display.center};
-    margin-bottom: 100px;
+    ${DISPLAY_FLEX}
+    ${FLEX_DIRECTION_COLUMN}
+    ${ALIGN_ITEMS_CENTER}
+    ${JUSTIFY_CONTENT_CENTER}
+    margin-bottom: ${numbers.hundred}px;
 `

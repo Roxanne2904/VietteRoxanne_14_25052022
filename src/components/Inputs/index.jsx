@@ -18,7 +18,12 @@ import {
     handleOpeningOfDatePicker,
     handleDateOnChange,
 } from './reusableFunctions'
+import PropTypes from 'prop-types'
 
+/**
+ * This component returns different type of inputs including selects.
+ * @returns { HTMLElements } It return a React Component.
+ */
 export default function Input({
     width,
     name,
@@ -28,7 +33,6 @@ export default function Input({
     errors,
     control,
     options,
-    action,
     myRef,
 }) {
     const [isItOpen, setIsItOpen] = useState(false)
@@ -55,7 +59,7 @@ export default function Input({
                 const { ref, ...rest } = register(name, { required: true })
 
                 return (
-                    <StyledInputContent width={width}>
+                    <StyledInputContent width={width} name={name}>
                         <StyledLabel
                             htmlFor={`${name}`}
                         >{`${label}`}</StyledLabel>
@@ -113,7 +117,7 @@ export default function Input({
                 )
             }
             return (
-                <StyledInputContent width={width}>
+                <StyledInputContent width={width} name={name}>
                     <StyledLabel htmlFor={`${name}`}>{`${label}`}</StyledLabel>
                     <Controller
                         name={`${name}`}
@@ -162,4 +166,22 @@ export default function Input({
         default:
             return
     }
+}
+
+Input.propTypes = {
+    width: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    register: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired,
+    control: PropTypes.object.isRequired,
+    options: PropTypes.arrayOf(PropTypes.object).isRequired,
+    myRef: PropTypes.object.isRequired,
+}
+
+Input.defaultProps = {
+    width: window.innerWidth,
+    myRef: {},
+    options: [],
 }

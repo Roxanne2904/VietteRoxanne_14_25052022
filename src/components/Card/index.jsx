@@ -3,7 +3,12 @@ import {
     StyledLiBlockData,
     StyledCategories,
 } from './styled'
+import PropTypes from 'prop-types'
 
+/**
+ * it returns a Card component.
+ * @returns { HTMLElements } It return a React Component.
+ */
 export const Card = ({ rowData, width }) => {
     if (rowData.length !== 0) {
         return (
@@ -48,3 +53,12 @@ export const Card = ({ rowData, width }) => {
     }
 }
 export default Card
+
+Card.propTypes = {
+    rowData: PropTypes.array.isRequired,
+    width: PropTypes.number.isRequired,
+}
+
+Card.defaultProps = {
+    width: window.innerWidth,
+}

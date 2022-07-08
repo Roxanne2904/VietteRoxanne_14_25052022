@@ -3,7 +3,7 @@ import { formatAString } from '../../utils/format'
 
 const initialState = {
     employees: [],
-    message: null,
+    message: 'there are no employee yet',
 }
 
 const employeesSlide = createSlice({
@@ -13,7 +13,7 @@ const employeesSlide = createSlice({
         resetInitialState: {
             reducer: (draft) => {
                 draft.employees = []
-                draft.message = null
+                draft.message = 'there are no employee yet'
             },
         },
         addAnEmployee: {

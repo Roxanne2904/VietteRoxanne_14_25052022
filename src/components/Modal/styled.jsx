@@ -1,19 +1,32 @@
 import styled from 'styled-components'
 //*Utils
-import { colors, radius, POSITION_PATTERN } from '../../utils/css'
+import {
+    weight,
+    numbers,
+    display,
+    colors,
+    radius,
+    POSITION_PATTERN,
+    COLOR_PRIMARY,
+    POSITION_ABSOLUTE,
+    FLEX_DIRECTION_COLUMN,
+    DISPLAY_FLEX,
+} from '../../utils/css'
 
 export const StyledTxtModal = styled.p`
-    display: ${({ toggleModal }) => (toggleModal === 'open' ? 'flex' : 'none')};
+    display: ${({ toggleModal }) =>
+        toggleModal === 'open' ? `${display.flex}` : `${display.none}`};
     border-radius: ${radius.secondary};
     background: ${colors.white};
-    box-shadow: 0px 0px 10px #000000;
-    color: ${colors.colorPrimary};
-    font-weight: bold;
-    position: absolute;
+    box-shadow: ${numbers.zero}px ${numbers.zero}px ${numbers.ten}px
+        ${colors.black};
+    ${COLOR_PRIMARY}
+    font-weight: ${weight.bold};
+    ${POSITION_ABSOLUTE}
     top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 1;
+    z-index: ${numbers.one};
     background: #f1f1f1;
     padding: 17px 31px;
     width: ${({ id, width }) =>
@@ -23,11 +36,11 @@ export const StyledTxtModal = styled.p`
                 : '50%'
             : width < 800
             ? '50%'
-            : '20%'};
-    ${({ id }) => id === 'warning' && 'flex-direction:column;'};
+            : `${numbers.twenty}%`};
+    ${({ id }) => id === 'warning' && `${FLEX_DIRECTION_COLUMN}`};
 `
 export const StyledModalContent = styled.div`
-    background-color: #000000;
+    background-color: ${colors.black};
     opacity: 0.72;
     ${POSITION_PATTERN}
 `
@@ -35,7 +48,7 @@ export const StyledModal = styled.div`
     ${POSITION_PATTERN}
 `
 export const StyledButtonsContent = styled.span`
-    display: flex;
+    ${DISPLAY_FLEX}
     justify-content: flex-end;
-    margin-top: 10px;
+    margin-top: ${numbers.ten}px;
 `

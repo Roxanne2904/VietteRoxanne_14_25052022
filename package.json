@@ -27,7 +27,7 @@
     "react-select": "^5.3.2",
     "redux": "^4.2.0",
     "redux-persist": "^6.0.0",
-    "roxv-react-calendar": "^1.0.2",
+    "roxv-react-calendar": "^1.0.8",
     "styled-components": "^5.3.5",
     "web-vitals": "^2.1.0",
     "yup": "^0.32.11"

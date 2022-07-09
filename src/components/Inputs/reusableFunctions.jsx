@@ -19,19 +19,24 @@ export const handleOpeningOfDatePicker = (domElement, setCurrentState) => {
  * @param { Function } setValidValue is the "set function" using on useState().
  */
 export function handleDateOnChange(event, myRegEx, validValue, setValidValue) {
-    let value = event.target.value //let's obtain our value!
-    let isItValidValue = myRegEx.test(value) //Let's test our current value with our pattern!
+    let value = event.target.value
+    let isItValidValue = myRegEx.test(value)
 
     if (isItValidValue) {
         if (validValue === null || validValue !== value) {
-            const AreThereARepetitionbByTwo =
-                value.split('/')[0].length && value.split('/')[2].length === 2
-            const AreThereARepetitionbByThree =
-                value.split('/')[0].length && value.split('/')[2].length === 3
-
-            !AreThereARepetitionbByTwo &&
-                !AreThereARepetitionbByThree &&
-                setValidValue(value)
+            if (
+                value.split('/')[0].length === 2 &&
+                value.split('/')[2].length === 2
+            ) {
+                return
+            }
+            if (
+                value.split('/')[0].length === 3 &&
+                value.split('/')[2].length === 3
+            ) {
+                return
+            }
+            setValidValue(value)
         }
     }
 }

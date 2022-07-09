@@ -10,3 +10,36 @@
     /* use theme parameters where possible */
     --ag-foreground-color: #2b489b;
 }
+
+.day_in--blue--custom {
+    color: rgb(24, 209, 154) !important;
+}
+.day_in--blue--custom:hover {
+    color: white !important;
+    background-color: rgb(7, 107, 107) !important;
+}
+.day_out--blue--custom {
+    color: rgb(206, 206, 127) !important;
+}
+.currentDay--blue--custom {
+    border: 2px solid red !important;
+}
+.day_selected--blue--custom {
+    background: rgb(117, 10, 103) !important;
+    font-weight: bold !important;
+}
+.sund_highli--blue--custom {
+    color: rgb(221, 103, 103) !important;
+    background-color: rgba(114, 41, 86, 0.158) !important;
+}
+
+.buttons_container--blue_year--custom {
+    border: solid 1px rgb(158, 15, 38) !important;
+}
+.arrows--blue--custom {
+    stroke: rgb(4, 43, 4) !important;
+}
+
+.year-month_container--blue--custom {
+    color: red !important;
+}

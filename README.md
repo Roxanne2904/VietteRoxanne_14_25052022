@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+<a href='https://fr.reactjs.org/' target="_blank"><img alt='react' src='https://img.shields.io/badge/React-100000?style=flat&logo=react&logoColor=55D2D7&labelColor=black&color=black'/></a>
+<a href='https://redux.js.org/' target="_blank"><img alt='redux' src='https://img.shields.io/badge/redux-100000?style=flat&logo=redux&logoColor=C67EF0&labelColor=black&color=black'/></a>
+<a href='https://react-redux.js.org/' target="_blank"><img alt='redux' src='https://img.shields.io/badge/React_Redux-100000?style=flat&logo=redux&logoColor=D681DA&labelColor=black&color=black'/></a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Styled Components](https://img.shields.io/badge/styled--components-DB7093?logo=styled-components&logoColor=white&style=flat)
+![Git](https://img.shields.io/badge/git-%23F05033.svg?logo=git&logoColor=white&style=flat)
 
-## Available Scripts
+[![Netlify Status](https://api.netlify.com/api/v1/badges/afc355dd-1f6f-4176-8a96-ebe3b7e1fa4a/deploy-status)](https://app.netlify.com/sites/oc-rv-hrnet-app/deploys)
 
-In the project directory, you can run:
+# Project #14 - HRnet
 
-### `yarn start`
+## I started this project on 25/05/2022
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+_Training begins on 23/12/2020_
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Dependencies
 
-### `yarn test`
+- @ag-grid-community/all-modules: "^27.3.0",
+- @emotion/react: "^11.9.0",
+- @emotion/styled: "^11.8.1",
+- @fortawesome/fontawesome-svg-core: "^6.1.1",
+- @fortawesome/free-solid-svg-icons: "^6.1.1",
+- @fortawesome/react-fontawesome: "^0.1.18",
+- @hookform/resolvers: "^2.8.10",
+- @reduxjs/toolkit: "^1.8.1",
+- @testing-library/jest-dom: "^5.14.1",
+- @testing-library/react: "^13.0.0",
+- @testing-library/user-event: "^13.2.1",
+- ag-grid-community: "^27.3.0",
+- ag-grid-react: "^27.3.0",
+- immer: "^9.0.14",
+- prop-types: "^15.8.1",
+- react: "^18.1.0",
+- react-dom: "^18.1.0",
+- react-hook-form: "^7.31.2",
+- react-redux: "^8.0.2",
+- react-router-dom: "^6.3.0",
+- react-scripts: "5.0.1",
+- react-select: "^5.3.2",
+- redux: "^4.2.0",
+- redux-persist: "^6.0.0",
+- roxv-react-calendar: "^1.0.17",
+- styled-components: "^5.3.5",
+- web-vitals: "^2.1.0",
+- yup: "^0.32.1-
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Launch the application
 
-### `yarn build`
+1. You have to clone this repository:
+   > `git clone https://github.com/Roxanne2904/VietteRoxanne_14_25052022.git myFolder`
+   >
+   > `cd myFolder`
+   >
+   > `npm install` or `yarn` -if you are using yarn- to install all dependencies.
+2. Then, you just have to do on your terminal `npm run start` or `yarn start`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Plugins
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- `roxv-react-calendar` have a look to the documentation [here](https://www.npmjs.com/package/roxv-react-calendar)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  > [Repository GitHub](https://github.com/Roxanne2904/roxv-react-calendar)
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- `react-hook-form` have a look to the documentation [here](https://react-hook-form.com/)
+- `react-select` have a look to the documentation [here](https://react-select.com/home)
+- `ag-grid-react` have a look to the documentation [here](https://www.ag-grid.com/react-data-grid/)

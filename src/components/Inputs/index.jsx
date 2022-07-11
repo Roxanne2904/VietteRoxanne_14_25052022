@@ -95,6 +95,7 @@ export default function Input({
                         <StyledErrorMessage>
                             {errors[name]?.message}
                         </StyledErrorMessage>
+
                         <StyledCalendarComponent state={isItOpen.toString()}>
                             <div
                                 style={{
@@ -103,16 +104,29 @@ export default function Input({
                                     right: '6px',
                                 }}
                             >
-                                <DatePicker
-                                    onChangeInputValue={validValue}
-                                    myInputRef={myRef}
-                                    mode={'blue'}
-                                    valueCustom={'1'}
-                                    language={'fr'}
-                                    areDaysOutOfMonthAllowed={true}
-                                    areSundaysAllowed={true}
-                                    areSundaysHighlighted={false}
-                                />
+                                {name === 'dateOfBirth' ? (
+                                    <DatePicker
+                                        onChangeInputValue={validValue}
+                                        myInputRef={myRef}
+                                        mode={'blue'}
+                                        valueCustom={'1'}
+                                        language={'en'}
+                                        areDaysOutOfMonthAllowed={true}
+                                        areSundaysAllowed={true}
+                                        areSundaysHighlighted={true}
+                                    />
+                                ) : (
+                                    <DatePicker
+                                        onChangeInputValue={validValue}
+                                        myInputRef={myRef}
+                                        mode={'blue'}
+                                        valueCustom={'1'}
+                                        language={'en'}
+                                        areDaysOutOfMonthAllowed={true}
+                                        areSundaysAllowed={false}
+                                        areSundaysHighlighted={false}
+                                    />
+                                )}
                             </div>
                         </StyledCalendarComponent>
                     </StyledInputContent>

@@ -111,7 +111,7 @@ export default function Input({
                                     language={'fr'}
                                     areDaysOutOfMonthAllowed={true}
                                     areSundaysAllowed={true}
-                                    areSundaysHighlighted={true}
+                                    areSundaysHighlighted={false}
                                 />
                             </div>
                         </StyledCalendarComponent>

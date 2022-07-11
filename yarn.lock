@@ -7845,10 +7845,10 @@ rollup@^2.43.1:
   optionalDependencies:
     fsevents "~2.3.2"
 
-roxv-react-calendar@^1.0.17:
-  version "1.0.17"
-  resolved "https://registry.yarnpkg.com/roxv-react-calendar/-/roxv-react-calendar-1.0.17.tgz#75b8fc4300f6e12f7506814f2d97be7f7f328a6b"
-  integrity sha512-j4X5uYsZLi8n5XcS7kqoDMPlJ2f8PKwbKxuQF0M7mT7xDmOa5KWZqZQWO2eriO4gKFgl0tne3bwFNezys65n0w==
+roxv-react-calendar@^1.0.18:
+  version "1.0.18"
+  resolved "https://registry.yarnpkg.com/roxv-react-calendar/-/roxv-react-calendar-1.0.18.tgz#e7eb16684f4e1ba03e182b55a273e24f92508a88"
+  integrity sha512-fJBjbS6yxiVYcttUPXXgglmfot+z0JHF+QPFwTZZHyJvA6HXyxrXA7DxoH4xyQS16pkJBMc+axX5EJwtTBl3xQ==
 
 run-parallel@^1.1.9:
   version "1.2.0"

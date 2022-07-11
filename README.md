@@ -54,11 +54,19 @@ _Training begins on 23/12/2020_
    > `npm install` or `yarn` -if you are using yarn- to install all dependencies.
 2. Then, you just have to do on your terminal `npm run start` or `yarn start`
 
-## Plugins
+## Selected plugins to convert to React
 
-- `roxv-react-calendar` have a look to the documentation [here](https://www.npmjs.com/package/roxv-react-calendar)
+1. I chose the `datetimepicker` to concert in React component.
 
-  > [Repository GitHub](https://github.com/Roxanne2904/roxv-react-calendar)
+- [datetimepicker-jQuery](https://github.com/xdan/datetimepicker)
+
+2. Rather than a simple conversion, I created a new React calendar component which for now, only works as a date picker.
+
+- [roxv-react-calendar](https://github.com/Roxanne2904/roxv-react-calendar)
+- you can find the component published on npm [here](https://www.npmjs.com/package/roxv-react-calendar)
+- Have a look to the documentation [here](https://roxv-react-calendar.netlify.app/?path=/docs/ui-datepicker--default)
+
+## Other Plugins
 
 - `react-hook-form` have a look to the documentation [here](https://react-hook-form.com/)
 - `react-select` have a look to the documentation [here](https://react-select.com/home)

@@ -34,13 +34,12 @@ import PropTypes from 'prop-types'
 export default function DataTable({ width }) {
     const dispatch = useDispatch() //*Redux
     const employees = useSelector(selectEmployees) //*Redux
-
     const [rowSelected, setRowSelected] = useState(false)
     const [employeeName, setEmployeeName] = useState()
     const [currentRowData, setCurrentRowData] = useState([])
     const [height, setHeight] = useState(window.innerHeight)
-
     const [rowData, setRowData] = useState() // Set rowData to Array of Objects, one Object per Row
+    const gridRef = useRef() // Optional - for accessing Grid's API
     const [columnDefs] = useState([
         {
             headerName: '#',
@@ -70,7 +69,6 @@ export default function DataTable({ width }) {
         { field: 'states', headerName: 'State' },
         { field: 'zipCode', headerName: 'Zip Code', type: ['idZipCode'] },
     ])
-
     const defaultColDef = useMemo(
         () => ({
             sortable: true,
@@ -82,7 +80,6 @@ export default function DataTable({ width }) {
         }),
         [width]
     )
-
     const columnTypes = useMemo(() => {
         return {
             nonEditableColumn: { editable: false },
@@ -97,10 +94,9 @@ export default function DataTable({ width }) {
                 resizable: false,
             },
             dateColumn: {
-                // specify we want to use the date filter
-                filter: 'agDateColumnFilter',
-                // add extra parameters for the date filter
+                filter: 'agDateColumnFilter', // specify we want to use the date filter
                 filterParams: {
+                    // add extra parameters for the date filter
                     // provide comparator function
                     comparator: (filterLocalDateAtMidnight, cellValue) => {
                         // In the example application, dates are stored as dd/mm/yyyy
@@ -123,14 +119,11 @@ export default function DataTable({ width }) {
             },
         }
     }, [])
-
-    const gridRef = useRef() // Optional - for accessing Grid's API
     const containerStyle = useMemo(
         () => ({ width: '100%', height: height > 700 ? '71%' : '75%' }),
         [height]
     )
     const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), [])
-
     useEffect(() => {
         setRowData(createRowsDatas(employees.employees))
 
@@ -143,14 +136,12 @@ export default function DataTable({ width }) {
 
         return () => window.removeEventListener('resize', updateDimensions)
     }, [employees.employees, width])
-
     //*useCallback
     const cellClickedListener = useCallback((event) => {
         setRowSelected(true)
         setEmployeeName(`${event.data.firstName} ${event.data.lastName}`)
         setCurrentRowData([event.data])
     }, [])
-
     const cellKeyDownListener = useCallback((event) => {
         if (event.event.code === 'Enter') {
             setRowSelected(true)
@@ -158,37 +149,30 @@ export default function DataTable({ width }) {
             setCurrentRowData([event.data])
         }
     }, [])
-
     const deselectCurrentRow = useCallback((e) => {
         gridRef.current.api.deselectAll()
         setRowSelected(false)
     }, [])
-
     const paginationNumberFormatter = useCallback((params) => {
         return params.value.toLocaleString()
     }, [])
-
     const onGridReady = useCallback(
         (params) => {
             setRowData(createRowsDatas(employees.employees))
         },
         [employees.employees]
     )
-
     const onPageSizeChanged = useCallback(() => {
         let value = document.getElementById('page-size').value
         gridRef.current.api.paginationSetPageSize(Number(value))
     }, [])
-
     const onFirstDataRendered = useCallback((params) => {
         gridRef.current.api.paginationGoToPage(4)
         gridRef.current.api.sizeColumnsToFit()
     }, [])
-
     const handleRemovedAnEmployee = () => {
         dispatch(removedAnEmployee(currentRowData))
     }
-
     return (
         <div style={containerStyle}>
             <div style={{ height: '100%', boxSizing: 'border-box' }}>

@@ -18,11 +18,9 @@ import { faUsers } from '@fortawesome/free-solid-svg-icons'
  */
 
 export default function CreateEmployee() {
-    const [width, setWidth] = useState(window.innerWidth)
-
+    const [width, setWidth] = useState(window.innerWidth) //*useState
     const employees = useSelector(selectEmployees) //*Redux
     const { message } = employees //*Redux
-
     useEffect(() => {
         const updateCurrentWidth = () => {
             const currentWidth = window.innerWidth
@@ -32,7 +30,6 @@ export default function CreateEmployee() {
 
         return () => window.removeEventListener('resize', updateCurrentWidth)
     }, [width])
-
     return (
         <div>
             <main>

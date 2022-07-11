@@ -16,6 +16,7 @@ import {
 import {
     myRegEx,
     handleOpeningOfDatePicker,
+    handleOpeningOfDatePickerOnKeyDown,
     handleDateOnChange,
 } from './reusableFunctions'
 import PropTypes from 'prop-types'
@@ -44,14 +45,31 @@ export default function Input({
                 document.activeElement !== myRef.current &&
                 setIsItOpen(false)
         }
+        const addBackDroponKeyDown = (e) => {
+            if (e.keyCode === 13) {
+                myRef !== undefined &&
+                    document.activeElement !== myRef.current &&
+                    setIsItOpen(false)
+            }
+        }
         window.addEventListener('click', addBackDrop)
+        window.addEventListener('keydown', addBackDroponKeyDown)
 
-        return () => window.removeEventListener('click', addBackDrop)
+        return () => {
+            window.removeEventListener('click', addBackDrop)
+            window.removeEventListener('keydown', addBackDroponKeyDown)
+        }
     }, [myRef])
 
     const memorizeDatePickerCallback = useCallback(() => {
         handleOpeningOfDatePicker(myRef, setIsItOpen)
     }, [myRef, setIsItOpen])
+    const memorizeDatePickerCallbackOnKeyDown = useCallback(
+        (event) => {
+            handleOpeningOfDatePickerOnKeyDown(event, myRef, setIsItOpen)
+        },
+        [myRef, setIsItOpen]
+    )
 
     switch (type) {
         case 'text':
@@ -73,6 +91,9 @@ export default function Input({
                                         name={`${name}`}
                                         id={`${name}`}
                                         onClick={memorizeDatePickerCallback}
+                                        onKeyDown={
+                                            memorizeDatePickerCallbackOnKeyDown
+                                        }
                                         {...register(name, {
                                             onChange: (e) => {
                                                 handleDateOnChange(

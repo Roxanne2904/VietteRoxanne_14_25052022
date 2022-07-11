@@ -30,9 +30,8 @@ import Button from '../../components/Button/index.jsx'
  */
 export default function EmployeeLists() {
     const dispatch = useDispatch() //*Redux
-    const [width, setWidth] = useState(window.innerWidth)
-    const [heigth, setHeigth] = useState(window.innerHeight)
-
+    const [width, setWidth] = useState(window.innerWidth) //*useState
+    const [heigth, setHeigth] = useState(window.innerHeight) //*useState
     useEffect(() => {
         const updateCurrentWidthAndHeight = () => {
             const currentWidth = window.innerWidth
@@ -45,7 +44,6 @@ export default function EmployeeLists() {
         return () =>
             window.removeEventListener('resize', updateCurrentWidthAndHeight)
     }, [width, heigth])
-
     return (
         <StyledEmployeeListMain heigth={heigth}>
             <Header

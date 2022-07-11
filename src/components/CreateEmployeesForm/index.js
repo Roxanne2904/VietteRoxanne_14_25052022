@@ -21,13 +21,14 @@ import { actionsEmployees } from './employeesReducer'
 //*utils
 import { department } from '../../utils/DatasForInputSelect/index'
 import PropTypes from 'prop-types'
-
 /**
  * it returns a form component in particular one to create a new employee.
  * @returns { HTMLElements } It return a React Component.
  */
 export default function CreateEmployeesForm({ currentWidth }) {
     const dispatch = useDispatch() //*Redux
+    const dateOfBirthRef = useRef(null) //*useRef
+    const startDateRef = useRef(null) //*useRef
     const {
         register,
         handleSubmit,
@@ -36,18 +37,12 @@ export default function CreateEmployeesForm({ currentWidth }) {
     } = useForm({
         resolver: yupResolver(schema),
     }) //*React-Hook-Form
-
-    const dateOfBirthRef = useRef(null)
-    const startDateRef = useRef(null)
-
     const onSubmit = (data) => {
         let i = parseInt(Math.random().toString().split('.')[1]) + 1
         let newData = { ...data, index: i }
-
         dispatch(actionsEmployees.addAnEmployee(newData))
         dispatch(actionsToggleModal.toggleModal())
     }
-
     return (
         <StyledContentForm width={currentWidth}>
             <StyledForm
@@ -132,7 +127,6 @@ export default function CreateEmployeesForm({ currentWidth }) {
                         />
                     </StyledInputsContent>
                 </StyledInputsGlobalContent>
-
                 <Button type="submit" text="Save" width={currentWidth} />
             </StyledForm>
         </StyledContentForm>

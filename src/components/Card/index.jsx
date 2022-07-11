@@ -10,44 +10,27 @@ import PropTypes from 'prop-types'
  * @returns { HTMLElements } It return a React Component.
  */
 export const Card = ({ rowData, width }) => {
+    let items = [
+        { category: rowData[0].firstName, id: 0, short: 'FirstN' },
+        { category: rowData[0].lastName, id: 1, short: 'LastN' },
+        { category: rowData[0].startDate, id: 2, short: 'StartD' },
+        { category: rowData[0].department, id: 3, short: 'Departm' },
+        { category: rowData[0].dateOfBirth, id: 4, short: 'DateOB' },
+        { category: rowData[0].street, id: 5, short: 'Street' },
+        { category: rowData[0].city, id: 6, short: 'City' },
+        { category: rowData[0].states, id: 7, short: 'State' },
+        { category: rowData[0].zipCode, id: 8, short: 'ZipC' },
+    ]
+    const listItems = items.map((elt) => (
+        <StyledLiBlockData key={`${elt.id}-${elt.short}`}>
+            <StyledCategories>{`${elt.short}: `}</StyledCategories>
+            {elt.category}
+        </StyledLiBlockData>
+    ))
     if (rowData.length !== 0) {
         return (
             <StyledUlBlockDatasEmployee width={width}>
-                <StyledLiBlockData>
-                    <StyledCategories>FN:</StyledCategories>{' '}
-                    {rowData[0].firstName}{' '}
-                </StyledLiBlockData>
-                <StyledLiBlockData>
-                    <StyledCategories>LN:</StyledCategories>{' '}
-                    {rowData[0].lastName}{' '}
-                </StyledLiBlockData>
-                <StyledLiBlockData>
-                    <StyledCategories>City:</StyledCategories> {rowData[0].city}{' '}
-                </StyledLiBlockData>
-                <StyledLiBlockData>
-                    <StyledCategories>Depmt:</StyledCategories>{' '}
-                    {rowData[0].department}{' '}
-                </StyledLiBlockData>
-                <StyledLiBlockData>
-                    <StyledCategories>S-Date:</StyledCategories>{' '}
-                    {rowData[0].startDate}{' '}
-                </StyledLiBlockData>
-                <StyledLiBlockData>
-                    <StyledCategories>D-O-Birth:</StyledCategories>{' '}
-                    {rowData[0].dateOfBirth}{' '}
-                </StyledLiBlockData>
-                <StyledLiBlockData>
-                    <StyledCategories>State:</StyledCategories>{' '}
-                    {rowData[0].states}{' '}
-                </StyledLiBlockData>
-                <StyledLiBlockData>
-                    <StyledCategories>Street:</StyledCategories>{' '}
-                    {rowData[0].street}{' '}
-                </StyledLiBlockData>
-                <StyledLiBlockData>
-                    <StyledCategories>ZipC:</StyledCategories>{' '}
-                    {rowData[0].zipCode}{' '}
-                </StyledLiBlockData>
+                {listItems}
             </StyledUlBlockDatasEmployee>
         )
     }

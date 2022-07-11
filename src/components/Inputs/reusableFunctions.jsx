@@ -10,6 +10,22 @@ export const handleOpeningOfDatePicker = (domElement, setCurrentState) => {
     domElement.current.focus()
     setCurrentState(true)
 }
+/**
+ * This Function is handling the display of the date picker on focus on keydown.
+ * @param { Object } event
+ * @param { Object } domElement
+ * @param { Function } setCurrentState is the "set function" using on useState().
+ */
+export const handleOpeningOfDatePickerOnKeyDown = (
+    event,
+    domElement,
+    setCurrentState
+) => {
+    if (event.keyCode === 13) {
+        domElement.current.focus()
+        setCurrentState(true)
+    }
+}
 
 /**
  * This function manages if the value renter when changing is valid or not.
@@ -21,7 +37,6 @@ export const handleOpeningOfDatePicker = (domElement, setCurrentState) => {
 export function handleDateOnChange(event, myRegEx, validValue, setValidValue) {
     let value = event.target.value
     let isItValidValue = myRegEx.test(value)
-
     if (isItValidValue) {
         if (validValue === null || validValue !== value) {
             if (

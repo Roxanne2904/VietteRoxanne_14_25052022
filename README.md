@@ -44,6 +44,14 @@ _Training begins on 23/12/2020_
 - web-vitals: "^2.1.0",
 - yup: "^0.32.1-
 
+## Goal
+
+> The goal of this project was to convert an application developed in jquery to react.js.
+>
+> One of the plugins also had to be converted. Here it's the date picker that has been chosen.
+
+- have a look to the repository from the original application [here](https://github.com/OpenClassrooms-Student-Center/P12_Front-end)
+
 ## Launch the application
 
 1. You have to clone this repository:
@@ -54,7 +62,7 @@ _Training begins on 23/12/2020_
    > `npm install` or `yarn` -if you are using yarn- to install all dependencies.
 2. Then, you just have to do on your terminal `npm run start` or `yarn start`
 
-## Selected plugins to convert to React
+## The selected plugin to convert to React
 
 1. I chose the `datetimepicker` to concert in React component.
 

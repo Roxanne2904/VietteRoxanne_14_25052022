@@ -33,7 +33,7 @@ export const StyledTxtModal = styled.p`
         id === 'warning'
             ? width < 800
                 ? '60%'
-                : '50%'
+                : '30%'
             : width < 800
             ? '50%'
             : `${numbers.twenty}%`};

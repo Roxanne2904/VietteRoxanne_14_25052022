@@ -70,9 +70,9 @@ _Training begins on 23/12/2020_
 
 2. Rather than a simple conversion, I created a new React calendar component which for now, only works as a date picker.
 
-- [roxv-react-calendar](https://github.com/Roxanne2904/roxv-react-calendar)
-- you can find the component published on npm [here](https://www.npmjs.com/package/roxv-react-calendar)
-- Have a look to the documentation [here](https://roxv-react-calendar.netlify.app/?path=/docs/ui-datepicker--default)
+- [react-calendar-library](https://github.com/Roxanne2904/react-calendar-library)
+- you can find the component published on npm [here](https://www.npmjs.com/package/react-calendar-library)
+- Have a look to the documentation [here](https://react-calendar-library.netlify.app/?path=/docs/ui-datepicker--default)
 
 ## Other Plugins
 

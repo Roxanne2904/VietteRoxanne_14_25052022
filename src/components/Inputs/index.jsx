@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { Controller } from 'react-hook-form'
 import Select from 'react-select'
-import { DatePicker } from 'roxv-react-calendar'
+import { DatePicker } from 'react-calendar-library'
 //*styled
 import {
     StyledInput,
@@ -130,7 +130,7 @@ export default function Input({
                                         onChangeInputValue={validValue}
                                         myInputRef={myRef}
                                         mode={'blue'}
-                                        valueCustom={'1'}
+                                        valueCustom={'3'}
                                         language={'en'}
                                         areDaysOutOfMonthAllowed={true}
                                         areSundaysAllowed={true}

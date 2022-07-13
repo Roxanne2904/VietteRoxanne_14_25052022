@@ -7416,6 +7416,11 @@ react-app-polyfill@^3.0.0:
     regenerator-runtime "^0.13.9"
     whatwg-fetch "^3.6.2"
 
+react-calendar-library@^1.0.23:
+  version "1.0.23"
+  resolved "https://registry.yarnpkg.com/react-calendar-library/-/react-calendar-library-1.0.23.tgz#278d8a2c27a2f4957d7f87f8a3cfae3183df4fab"
+  integrity sha512-Ku6yXZFyRZAdfwuIS6ZGlOZyjR46IbeRYFjFojstlalAMTeGcn1yJEqNxmyQH0CVOi+VY/vDuuJ0UE57gZ9kDg==
+
 react-dev-utils@^12.0.1:
   version "12.0.1"
   resolved "https://registry.npmjs.org/react-dev-utils/-/react-dev-utils-12.0.1.tgz"
@@ -7844,11 +7849,6 @@ rollup@^2.43.1:
   integrity sha512-K2zW7kV8Voua5eGkbnBtWYfMIhYhT9Pel2uhBk2WO5eMee161nPze/XRfvEQPFYz7KgrCCnmh2Wy0AMFLGGmMA==
   optionalDependencies:
     fsevents "~2.3.2"
-
-roxv-react-calendar@^1.0.21:
-  version "1.0.21"
-  resolved "https://registry.yarnpkg.com/roxv-react-calendar/-/roxv-react-calendar-1.0.21.tgz#abc74afba7f68780895aadc9570fd2e53a5a7798"
-  integrity sha512-OCpe2QCftxEQx4DXBwiZXk+stcSsAp9o0NTRWuQdh36BRjL54ba7PILfotiJAjex7bUOemPdFuFS2RFtwDLAvA==
 
 run-parallel@^1.1.9:
   version "1.2.0"

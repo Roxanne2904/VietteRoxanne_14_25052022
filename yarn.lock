@@ -7416,10 +7416,10 @@ react-app-polyfill@^3.0.0:
     regenerator-runtime "^0.13.9"
     whatwg-fetch "^3.6.2"
 
-react-calendar-library@^1.0.23:
-  version "1.0.23"
-  resolved "https://registry.yarnpkg.com/react-calendar-library/-/react-calendar-library-1.0.23.tgz#278d8a2c27a2f4957d7f87f8a3cfae3183df4fab"
-  integrity sha512-Ku6yXZFyRZAdfwuIS6ZGlOZyjR46IbeRYFjFojstlalAMTeGcn1yJEqNxmyQH0CVOi+VY/vDuuJ0UE57gZ9kDg==
+react-calendar-library@^1.0.24:
+  version "1.0.24"
+  resolved "https://registry.yarnpkg.com/react-calendar-library/-/react-calendar-library-1.0.24.tgz#0b4277d99a6a2e99efb0c5a562167a41f50e124d"
+  integrity sha512-S7LCmzoWk24pNJiX8WT5UpbfVQy7dMNmbBUOowa9YtEdbIcWeqril+/NpCdeIE+65m189nRq/fHrPu04AvDevg==
 
 react-dev-utils@^12.0.1:
   version "12.0.1"

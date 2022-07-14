@@ -122,7 +122,7 @@ export default function Input({
                                 style={{
                                     position: 'relative',
                                     top: '4px',
-                                    right: '6px',
+                                    right: width < 650 ? '20px' : '3px',
                                 }}
                             >
                                 {name === 'dateOfBirth' ? (

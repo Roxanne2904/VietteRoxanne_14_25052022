@@ -11,7 +11,7 @@ export const schema = yup.object().shape({
             value: yup.string().required(`State ${string_strIsRequired}`),
         })
         .nullable() // for handling null value when clearing options via clicking "x"
-        .required('states is required (from outter null check)'),
+        .required('states is required'),
     department: yup
         .object()
         .shape({
@@ -19,7 +19,7 @@ export const schema = yup.object().shape({
             value: yup.string().required(`Department ${string_strIsRequired}`),
         })
         .nullable() // for handling null value when clearing options via clicking "x"
-        .required('Department is required (from outter null check)'),
+        .required('Department is required '),
     firstName: yup.string().required(`First Name ${string_strIsRequired}`),
     lastName: yup.string().required(`Last name ${string_strIsRequired}`),
     dateOfBirth: yup

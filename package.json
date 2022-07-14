@@ -19,7 +19,7 @@
     "immer": "^9.0.14",
     "prop-types": "^15.8.1",
     "react": "^18.1.0",
-    "react-calendar-library": "^1.0.23",
+    "react-calendar-library": "^1.0.24",
     "react-dom": "^18.1.0",
     "react-hook-form": "^7.31.2",
     "react-redux": "^8.0.2",

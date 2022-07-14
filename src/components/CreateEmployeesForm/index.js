@@ -46,7 +46,7 @@ export default function CreateEmployeesForm({ currentWidth }) {
     return (
         <StyledContentForm width={currentWidth}>
             <StyledForm
-                action="#"
+                action="post"
                 id="create-employee"
                 onSubmit={handleSubmit(onSubmit)}
             >

@@ -172,6 +172,8 @@ export default function DataTable({ width }) {
     }, [])
     const handleRemovedAnEmployee = () => {
         dispatch(removedAnEmployee(currentRowData))
+        gridRef.current.api.deselectAll()
+        setRowSelected(false)
     }
     return (
         <div style={containerStyle}>
